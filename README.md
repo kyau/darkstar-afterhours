@@ -2,7 +2,9 @@
 
 This project was created in order to emulate what [FFXIAH](http://www.ffxiah.com/) provides for Retail FFXI yet for the Darkstar FFXI Server Emulator. While this project could be adapted to work with any private server, it has been specifically developed with the AfterHours Private Server in mind.  
 
-You can see a live demo [here](https://ffxi.kyau.net:4444/)
+:godmode: Live Demo: [here](https://ffxi.kyau.net:4444/)  
+:inbox_tray: [Installation](#installation)  
+:memo: [TODO](#todo)
 
 ### Installation
 
@@ -50,3 +52,20 @@ $ php ffxiah_import_xml.php
 ```
 
 After this you would probably want to edit the `help.php` and `download.php` files to customize them to your liking. The main site logo text is in `include/html.inc`.
+
+### TODO
+
+- [x] User Online Status / Full User List
+- [x] Aution House Category Listings
+- [x] Aution House Item Information
+- [x] Item Tooltips
+- [x] Armor/Weapon Tooltips -> Darkstar Database
+- [x] Descriptive Items Tooltip -> FFXIAH XML
+- [ ] Add Latent Effects on Item Tooltips
+- [ ] Add On Use Effects on Item Tooltips
+- [ ] Add Items/Key Items to Auto-Translator
+- [x] Implement Item Search
+- [ ] Add Filters to Item Search
+- [x] Remaster Ingame Icons
+- [x] Help/FAQ Section
+- [ ] Download Section
