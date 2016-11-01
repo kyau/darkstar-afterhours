@@ -1,0 +1,22 @@
+.tooltip {
+  border-collapse: collapse;
+  display: none;
+  pointer-events: none;
+  position: fixed;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 10pt;
+  z-index: 9999;
+  min-width: 300px;
+}
+.tooltip .tbl-tooltip {
+  border: 1px solid rgba(19,19,19,1);
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  min-height: 52px;
+  min-width: 300px;
+}
+/*.tooltip .tbl-item {  }*/
+/*.tooltip .tbl { background-color: rgba(34,34,34,1); }*/
+img.link { cursor: pointer; }
