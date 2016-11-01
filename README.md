@@ -1,15 +1,17 @@
 # darkstar-afterhours
 
-This project was created in order to emulate what [FFXIAH](http://www.ffxiah.com/) provides for Retail FFXI yet for the Darkstar FFXI Server Emulator. While this project could be adapted to work with any private server, it has been specifically developed with the AfterHours Private Server in mind.
+This project was created in order to emulate what [FFXIAH](http://www.ffxiah.com/) provides for Retail FFXI yet for the Darkstar FFXI Server Emulator. While this project could be adapted to work with any private server, it has been specifically developed with the AfterHours Private Server in mind.  
 
-#### Installation
+You can see a live demo [here](https://ffxi.kyau.net:4444/)
+
+### Installation
 
 darkstar-afterhours recommends [PHP](https://php.net/) v7+ to run.  
 darkstar-afterhours recommends [NGINX](https://www.nginx.com/) v1.11+ to run.
 
 Download and extract the [latest release](https://github.com/kyau/darkstar-afterhours/archive/master.zip).
 
-Make sure NGINX and PHP are already setup and running, then add the following rewrite rules to your NGINX config.
+Make sure NGINX and PHP are already setup and running, then add the following rewrite rules to your NGINX config. (If you want to use different web server software just convert these rewrite and location deny lines into the appropriate syntax for your web server.)
 
 ```nginx
 rewrite ^/(db|download|help|users)$ /$1.php last;
