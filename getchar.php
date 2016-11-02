@@ -5,8 +5,8 @@ require("include/html.inc");
 $compiled = array();
 $jobs = array("GENKAI","WAR","MNK","WHM","BLM","RDM","THF","PLD","DRK","BST","BRD","RNG","SAM","NIN","DRG","SMN","BLU","COR","PUP","DNC","SCH","GEO","RUN");
 
-if (isset($_GET['c'])) {
-  $charid = $_GET['c'];
+if (isset($_GET['id'])) {
+  $charid = $_GET['id'];
   //$charid = '21828';
   // check to see if character exists
   $chars_data = sqlQuery("SELECT * FROM `chars` WHERE charid = ".$charid);

@@ -68,7 +68,7 @@ EOF;
   }
   $idtitle .= " data-stack=\"".$stack."\"";
   $html = $html . "  <title>AfterHours</title>\n</head>\n\n";
-  $html = $html . "<body onload=\"loadChat();loadStartPage();vanaClock();\"".$idtitle.">\n";
+  $html = $html . "<body".$idtitle.">\n";
   $html = $html . <<<EOF
   <div id="stretch">
     <a href="https://github.com/DarkstarProject/darkstar"><img id="darkstar" src="images/darkstar.png" /></a>

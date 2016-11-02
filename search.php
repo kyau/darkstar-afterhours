@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
   $count = 0;
   while($item = $tmp->fetch_assoc()) {
     $items[$count]["itemid"] = intval($item["itemid"]);
-    $name = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$row['itemid'])['realname']);
+    $name = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$item['itemid'])['realname']);
     //$name = str_replace("_", " ", $item["name"]);
     //$name = mb_eregi_replace('\bM{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\b', "strtoupper('\\0')", $name, 'e');
     //$name = ucwords($name);

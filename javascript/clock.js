@@ -347,11 +347,16 @@ function printPage() {
 }
 
 function vanaClock() {
-    getVanadielTime();
-    getMoonPhase();
-    setTimeout("vanaClock()", 500);
+    //getVanadielTime();
+    //getMoonPhase();
+    //setTimeout("vanaClock()", 500);
 }
 
-
+$(function() {
+    getVanadielTime();
+    getMoonPhase();
+    setInterval("getVanadielTime()", 500);
+    setInterval("getMoonPhase()", 5000);
+});
 
 // -->

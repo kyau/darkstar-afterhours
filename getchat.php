@@ -79,20 +79,14 @@ while($row = $tmp->fetch_assoc()) {
   $chars = sqlQuery("SELECT charid FROM `chars` WHERE charname = '".$arr['name']."'");
   $arr['charid'] = $dcon->real_escape_string($chars['charid']);
   $stamp = strtotime($dcon->real_escape_string($row['datetime']));
-  //$timestamp = date ( 'H:i:s', $stamp);
-  //$timestamp = trim(date("m/d/Y h:ia",$stamp), "m");
   $timestamp = new DateTime(date("m/d/Y h:i:s",$stamp));
-  $timestamp->add(new DateInterval("PT9H"));
-  $new = trim($timestamp->format("m/d/Y H:ia"), "m");
-  //$timestamp = strtotime(strtotime("3 hours"), $timestamp);
-  $arr['timestamp'] = $new;
-  $arr['message'] = mdecode(parseAutoTranslate(mencode($dcon->real_escape_string($row['message']))));
+  $arr['timestamp'] = trim($timestamp->format("m/d/Y h:ia"), "m");
+  $arr['message'] = mdecode(parseAutoTranslate(mencode($row['message'])));
   $compiled[$num] = $arr;
   $num++;
 }
 
 $json = json_encode($compiled);
 echo $json."\n";
-//echo mencode("&lt;span class='at-o'&gt;&laquo;&lt;/span&gt;unknown&lt;span class='at-c'&gt;&raquo;&lt;/span&gt;");
 
 ?>
