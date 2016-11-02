@@ -191,10 +191,10 @@ if (isset($_GET['id'])) {
           $mods .= $space."<span class=\"stat\">Ranged Attack".$tmpadd.$row["value"]."</span>";
           break;
         case 25:
-          $mods .= $space."<span class=\"stat\">Ranged Accuracy".$tmpadd.$row["value"]."</span>";
+          $mods .= $space."<span class=\"stat\">Accuracy".$tmpadd.$row["value"]."</span>";
           break;
         case 26:
-          $mods .= $space."<span class=\"stat\">Accuracy".$tmpadd.$row["value"]."</span>";
+          $mods .= $space."<span class=\"stat\">Ranged Accuracy".$tmpadd.$row["value"]."</span>";
           break;
         case 27:
           $mods .= $space."<span class=\"stat\">Enmity".$tmpadd.$row["value"]."</span>";

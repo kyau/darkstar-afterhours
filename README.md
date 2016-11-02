@@ -56,6 +56,9 @@ After this you would probably want to edit the `help.php` and `download.php` fil
 ### TODO
 
 - [x] User Online Status / Full User List
+- [x] Character Profiles
+- [ ] Implement Mission Status on Character Profiles
+- [ ] Properly Color Crafts on Character Profiles when Capped
 - [x] Aution House Category Listings
 - [x] Aution House Item Information
 - [x] Item Tooltips

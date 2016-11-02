@@ -128,7 +128,7 @@ if (isset($_GET['c'])) {
       default:
         $slot = $i;
     }
-    $tmpequip = sqlQuery("SELECT * FROM `char_inventory` WHERE charid = ".$charid." AND location = 0 AND slot = (SELECT slotid FROM `char_equip` WHERE charid = ".$charid." AND equipslotid = ".$i.")");
+    $tmpequip = sqlQuery("SELECT * FROM `char_inventory` WHERE charid = ".$charid." AND location = (SELECT containerid FROM `char_equip` WHERE charid = ".$charid." AND equipslotid = ".$i.") AND slot = (SELECT slotid FROM `char_equip` WHERE charid = ".$charid." AND equipslotid = ".$i.")");
     $equipment[$slot] = isset($tmpequip['itemId']) ? $tmpequip['itemId'] : "0";
     //$equipment[$i] = isset($tmpequip['itemId']) ? $tmpequip['itemId'] : "0";
   }
