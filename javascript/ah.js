@@ -25,6 +25,11 @@ function getAHCategory() {
 				return 0;
 			} else {
 				$("#auctions").html("");
+				if (ahcat > 13 && ahcat != 15) {
+					//$(".tbl-ahcat").find(".tbl-subhead").find("td:eq(2)").remove();
+					//console.log("Removing DPS Header!");
+					$(".tbl-ahcat thead tr.tbl-subhead th:eq(2)").remove();
+				}
 				$.each(jsonData.items, function(i, item) {
 					var category = $("#ahcat").text();
 					$(document).prop('title', 'AfterHours - ' + category);
@@ -39,10 +44,19 @@ function getAHCategory() {
 						html += " x" + item.stack;
 					html += "</td>";
 					html += "<td class=\"center\">"+item.level+"</td>";
+					if (ahcat < 14 || ahcat == 15)
+						html += "<td class=\"center\">"+item.dps+"</td>";
 					html += "<td class=\"center\">"+item.price+"</td>";
 					html += "<td class=\"center\">"+item.instock+"</td>";
 					html += "</tr>";
 					$("#auctions").append(html);
+				});
+				$(".tbl-ahcat").tablesorter({
+					headers: {
+						4: {
+							sorter: 'price'
+						}
+					}
 				});
 			}
 		}
@@ -51,11 +65,17 @@ function getAHCategory() {
 
 $(function() {
 	getAHCategory();
-	$(".tbl-ahcat").tablesorter({
-		headers: {
-			3: {
-				sorter: 'price'
-			}
+
+	$(".tbl-subhead th").mouseup(function() {
+		$(".tablesorter-header .fa").each(function() {
+			$(this).attr('class', 'fa').addClass('fa-sort');
+		});
+		if ($(this).hasClass("tablesorter-headerUnSorted")) {
+			$(this).find(".tablesorter-header-inner .fa").attr('class', 'fa').addClass('fa-sort-desc');
+		} else if ($(this).hasClass("tablesorter-headerAsc")) {
+			$(this).find(".tablesorter-header-inner .fa").attr('class', 'fa').addClass('fa-sort-asc');
+		} else if ($(this).hasClass("tablesorter-headerDesc")) {
+			$(this).find(".tablesorter-header-inner .fa").attr('class', 'fa').addClass('fa-sort-desc');
 		}
 	});
 });

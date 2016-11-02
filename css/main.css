@@ -425,6 +425,8 @@ img.mini-icon { vertical-align: text-bottom; }
 }
 .item-ahcat { color: rgba(119,170,255,1) !important; }
 .catlink { cursor: pointer; }
+.tablesorter th { outline: none; }
+.tablesorter-header-inner { cursor: pointer; }
 /* Mobile */
 @media only screen and (max-width: 400px) {
   #closed { display: none;}

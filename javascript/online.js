@@ -1,9 +1,16 @@
+$.tablesorter.addParser({
+	id: 'job',
+	is: function(s) {
+		return false;
+	}, 
+	format: function(s) {
+		s = s.split("/");
+		return s[0].substr(3);
+	},
+	type: 'numeric'
+});
+
 function loadStartPage() {}
-/*function loadStartPage() {
-	$("#tbl-online").tablesorter();
-	buildPlayerTable();
-	setInterval("buildPlayerTable()", 5000);
-}*/
 
 function getOnlinePlayers() {
 	$.ajax({
@@ -40,7 +47,25 @@ function getOnlinePlayers() {
 }
 
 $(function() {
-	$("#ajax").tablesorter();
+	$("#tbl-online").tablesorter({
+		headers: {
+			3: {
+				sorter: 'job'
+			}
+		}
+	});
 	getOnlinePlayers();
 	setInterval("getOnlinePlayers()", 5000);
+	$(".tbl-head th").mouseup(function() {
+		$(".tablesorter-header .fa").each(function() {
+			$(this).attr('class', 'fa').addClass('fa-sort');
+		});
+		if ($(this).hasClass("tablesorter-headerUnSorted")) {
+			$(this).find(".tablesorter-header-inner .fa").attr('class', 'fa').addClass('fa-sort-desc');
+		} else if ($(this).hasClass("tablesorter-headerAsc")) {
+			$(this).find(".tablesorter-header-inner .fa").attr('class', 'fa').addClass('fa-sort-asc');
+		} else if ($(this).hasClass("tablesorter-headerDesc")) {
+			$(this).find(".tablesorter-header-inner .fa").attr('class', 'fa').addClass('fa-sort-desc');
+		}
+	});
 });

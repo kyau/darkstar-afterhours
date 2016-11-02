@@ -25,18 +25,19 @@ EOF;
 EOF;
 $catid = $_GET['id'];
 $category = getCategory($catid);
-printf("          <td id=\"ahcat\" colspan=\"5\">%s</td>", $category);
+printf("          <td id=\"ahcat\" colspan=\"6\">%s</td>", $category);
   echo <<<EOF
         </tr>
         <tr class="tbl-subhead">
           <td>&nbsp;</td>
           <th class="left">Item <i class="fa fa-unsorted" aria-hidden="true"></i></th>
           <th class="center">Level <i class="fa fa-unsorted" aria-hidden="true"></i></th>
+          <th class="center">DPS <i class="fa fa-unsorted" aria-hidden="true"></i></th>
           <th class="center">Price <i class="fa fa-unsorted" aria-hidden="true"></i></th>
           <th class="center">Stock <i class="fa fa-unsorted" aria-hidden="true"></i></th>
         </tr></thead>
         <tbody id="auctions">
-          <tr><td colspan="5" class="center" style="padding: 4px 10px; font-size:12pt">
+          <tr><td colspan="6" class="center" style="padding: 4px 10px; font-size:12pt">
 EOF;
   printf("            <i class=\"fa fa-refresh fa-spin fa-fw\" aria-hidden=\"true\"></i> %s", $loading[array_rand($loading)]);
   echo <<<EOF
