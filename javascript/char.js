@@ -196,20 +196,20 @@ function getPlayer() {
 					$("#auto_equip"+i.toString()).html(tmp);
 					z = z + 1;
 				})
-				if (typeof typeof jsonData.missions !== 'undefined') {
-					if (typeof jsonData.missions.zilart !== 'undefined')
+				if (typeof jsonData.missions !== 'undefined') {
+					if (jsonData.missions.zilart != 'None')
 						$("#auto_mission1").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.zilart.replace(" ", "%20")+"\">"+jsonData.missions.zilart+"</a>");
 					else
 						$("#auto_mission1").html(jsonData.missions.zilart);
-					if (typeof jsonData.missions.cop !== 'undefined')
+					if (jsonData.missions.cop != 'None')
 						$("#auto_mission2").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.cop.replace(" ", "%20")+"\">"+jsonData.missions.cop+"</a>");
 					else
 						$("#auto_mission2").html(jsonData.missions.cop);
-					if (typeof jsonData.missions.toau !== 'undefined')
+					if (jsonData.missions.toau != 'None')
 						$("#auto_mission3").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.toau.replace(" ", "%20")+"\">"+jsonData.missions.toau+"</a>");
 					else
 						$("#auto_mission3").html(jsonData.missions.toau);
-					if (typeof jsonData.missions.wotg !== 'undefined')
+					if (jsonData.missions.wotg != 'None')
 						$("#auto_mission5").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.wotg.replace(" ", "%20")+"\">"+jsonData.missions.wotg+"</a>");
 					else
 						$("#auto_mission5").html(jsonData.missions.wotg);

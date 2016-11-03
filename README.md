@@ -2,7 +2,7 @@
 
 This project was created in order to emulate what [FFXIAH](http://www.ffxiah.com/) provides for Retail FFXI yet for the Darkstar FFXI Server Emulator. While this project could be adapted to work with any private server, it has been specifically developed with the AfterHours Private Server in mind.  
 
-:godmode: Live Demo: [here](https://ffxi.kyau.net:4444/)  
+:godmode: [Live Demo](https://ffxi.kyau.net:4444/)  
 :inbox_tray: [Installation](#installation)  
 :memo: [TODO](#todo)
 
@@ -57,10 +57,10 @@ After this you would probably want to edit the `help.php` and `download.php` fil
 
 - [x] User Online Status / Full User List
 - [x] Character Profiles
-- [ ] Implement Mission Status on Character Profiles
+- [x] Implement Mission Status on Character Profiles
 - [ ] Properly Color Crafts on Character Profiles when Capped
-- [x] Aution House Category Listings
-- [x] Aution House Item Information
+- [x] Auction House Category Listings
+- [x] Auction House Item Information
 - [x] Item Tooltips
 - [x] Armor/Weapon Tooltips -> Darkstar Database
 - [x] Descriptive Items Tooltip -> FFXIAH XML
