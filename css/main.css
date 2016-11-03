@@ -189,6 +189,7 @@ h2 > a:hover {
 .tbl-stats, .tbl-stats > thead > tr > th { width: 120px; text-align: center; }
 .tbl.text, .tbl-text > tbody > tr > td,
 .tbl.text, .tbl-text > thead > tr > th { width: 320px; max-width: 320px; }
+.tbl-mission a { color: rgb(119,170,255); }
 .tbl-ahcats, .tbl-ahcats > thead > tr > th { width: 280px; }
 .tbl-stats #auto_linkshell > img { vertical-align: text-bottom; position: relative; top: -1px; }
 .tbl-stats h3#auto_name {  color: rgb(255,140,0); }
