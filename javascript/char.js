@@ -213,6 +213,18 @@ function getPlayer() {
 						$("#auto_mission5").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.wotg.replace(" ", "%20")+"\">"+jsonData.missions.wotg+"</a>");
 					else
 						$("#auto_mission5").html(jsonData.missions.wotg);
+					if (jsonData.missions.acp != 'None')
+						$("#auto_mission7").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.acp.replace(" ", "%20")+"\">"+jsonData.missions.acp+"</a>");
+					else
+						$("#auto_mission7").html(jsonData.missions.acp);
+					if (jsonData.missions.mxd != 'None')
+						$("#auto_mission8").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.mxd.replace(" ", "%20")+"\">"+jsonData.missions.mxd+"</a>");
+					else
+						$("#auto_mission8").html(jsonData.missions.mxd);
+					if (jsonData.missions.asa != 'None')
+						$("#auto_mission9").html("<a href=\"https://www.bg-wiki.com/bg/"+jsonData.missions.asa.replace(" ", "%20")+"\">"+jsonData.missions.asa+"</a>");
+					else
+						$("#auto_mission9").html(jsonData.missions.asa);
 				}
 				$("#auctions").html("");
 				$.each(jsonData.ah, function(i, item) {

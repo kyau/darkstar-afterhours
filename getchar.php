@@ -424,13 +424,13 @@ if (isset($_GET['id'])) {
   // pull character mission information
   $missions = sqlQuery("SELECT missions FROM `chars` WHERE charid = ".$charid)["missions"];
   //$output = "";
-  $compiled["misisons"]["sandoria"] = "None";
-  $compiled["misisons"]["bastok"] = "None";
-  $compiled["misisons"]["windurst"] = "None";
-  $compiled["misisons"]["zilart"] = "None";
-  $compiled["misisons"]["toau"] = "None";
-  $compiled["misisons"]["wotg"] = "None";
-  $compiled["misisons"]["cop"] = "None";
+  $compiled["missions"]["sandoria"] = "None";
+  $compiled["missions"]["bastok"] = "None";
+  $compiled["missions"]["windurst"] = "None";
+  $compiled["missions"]["zilart"] = "None";
+  $compiled["missions"]["toau"] = "None";
+  $compiled["missions"]["wotg"] = "None";
+  $compiled["missions"]["cop"] = "None";
   $compiled["missions"]["campaign"] = "None";
   $compiled["missions"]["acp"] = "None";
   $compiled["missions"]["mxd"] = "None";
@@ -439,26 +439,44 @@ if (isset($_GET['id'])) {
   $kid = unpack('C*', $missions);
   $kida = array_merge($kid, $mission_array);
    
+  $statusacp = array();
+  $statusmxd = array();
+  $statusasa = array();
   foreach($kid as $key=>$value){
     $status="$value";
 	if($value==1 && $key !=1 && $key !=67 && $key !=133 && $key !=199 && $key !=265 && $key !=331 && $key !=397 && $key !=595 && $key !=661 && $key !=727 && $key !=793){
-    	$status="Complete";
+    	$status="COMPLETE";
     }
     if($value>0 && $key ==1 || $value>0 && $key ==67 || $value>0 && $key ==133 || $value>0 && $key ==199 || $value>0 && $key ==265 || $value>0 && $key ==331 || $value>0 && $key ==397 || $value>0 && $key ==595 || $value>0 && $key ==661 || $value>0 && $key ==727 || $value>0 && $key ==793){
     	$newvalue=$key+2+$value;
     	$status=$mission_array[$newvalue];
     	$status=str_replace('_',' ',$status);
+    	if ($status != "**UNKNOWN**" && ($key > 500 && $key < 610)) {
+			array_push($statusacp, $status);
+    	}
+    	if ($status != "**UNKNOWN**" && ($key > 655 && $key < 680)) {
+    		array_push($statusmxd, $status);
+    	}
+    	if ($status != "**UNKNOWN**" && ($key > 725 && $key < 750)) {
+    		array_push($statusasa, $status);
+    	}
     }
     if($value==255){
     	$status="NONE";
     }
     if($value==0 && $key !=1 && $key !=67 && $key !=133 && $key !=199 && $key !=265 && $key !=331 && $key !=397 && $key !=595 && $key !=661 && $key !=727 && $key !=793){
-    	$status="Unavailable";
+    	$status="UNAVAILABLE";
     }
     if($value==0 && $key ==1 || $value==0 && $key ==67 || $value==0 && $key ==133 || $value==0 && $key ==199 || $value==0 && $key ==265 || $value==0 && $key ==331 || $value==0 && $key ==397 || $value==0 && $key ==595 || $value==0 && $key ==661 || $value==0 && $key ==727 || $value==0 && $key ==793){
     	$status="NONE";
     }
 	if(!isset($mission_array[$key]) or $key>=495 or $key==9 or $key==10 or $key==11 or $key==12 or $key==75 or $key==76 or $key==77 or $key==78 or $key==141 or $key==142 or $key==143 or $key==144){
+		if ($key==595 && !empty($statusacp))
+			$compiled["missions"]["acp"] = ucwords(strtolower(implode(" / ", $statusacp)));
+		if ($key==661 && !empty($statusmxd))
+			$compiled["missions"]["mxd"] = ucwords(strtolower(implode(" / ", $statusmxd)));
+		if ($key==727 && !empty($statusasa))
+			$compiled["missions"]["asa"] = ucwords(strtolower(implode(" / ", $statusasa)));
 	}else{
 		if($key==1){
 			$compiled["missions"]["sandoria"] = ucwords(strtolower($status));
@@ -486,6 +504,7 @@ if (isset($_GET['id'])) {
 		}
 		if($key==595){
 			$compiled["missions"]["acp"] = ucwords(strtolower($status));
+			//$compiled["missions"]["acp"] = $tmp;
 		}
 		if($key==661){
 			$compiled["missions"]["mxd"] = ucwords(strtolower($status));
