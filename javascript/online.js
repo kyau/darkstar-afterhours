@@ -36,8 +36,10 @@ function getOnlinePlayers() {
 					onlineUsers += userData.name + '</a></td>';
 					onlineUsers += '  <td>' + '<a href="/char/' + userData.charid + '">' + userData.zone.replace(/_/g," ") + '</a></td>' +
 								  '  <td>' + '<a href="/char/' + userData.charid + '">' + userData.mainjob;
-					if (userData.subjob != "") onlineUsers += '/';
+					if (userData.subjob.substr(0,6) != "GENKAI") {
+						onlineUsers += '/';
 						onlineUsers += userData.subjob + '</a></td></tr>';
+					}
 				});
 			}
 			$('#ajax').html(onlineUsers);

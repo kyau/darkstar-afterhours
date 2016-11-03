@@ -58,7 +58,7 @@ echo <<<EOF
         </tr><tr>
           <td>
             <b>What Jobs *DO NOT* Work?</b><br/>
-            Please do not play Puppetmaster, Runefencer or Geomancer as these are extremely buggy at the moment and will likely crash the server. Beastmaster and Corsair might also have issues.<br/><br/>
+            Please do not play Puppetmaster, Runefencer or Geomancer as these are extremely buggy at the moment and will likely crash the server.<br/><br/>
           </td>
         </tr><tr>
           <td>

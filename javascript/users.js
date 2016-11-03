@@ -29,8 +29,10 @@ function getAllUsers() {
 					allUsers += userData.name + '</a></td>';
 					allUsers += '  <td>' + '<a href="/char/' + userData.charid + '">' + userData.zone.replace(/_/g," ") + '</a></td>' +
 								  '  <td>' + '<a href="/char/' + userData.charid + '">' + userData.mainjob;
-					if (userData.subjob != "") allUsers += '/';
+					if (userData.subjob.substr(0,6) != "GENKAI") {
+						allUsers += '/';
 						allUsers += userData.subjob + '</a></td></tr>';
+					}
 				});
 			}
 			$('#ajax').html(allUsers);

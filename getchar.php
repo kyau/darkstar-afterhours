@@ -423,7 +423,19 @@ if (isset($_GET['id'])) {
   $compiled['gil'] = isset($char_gil['quantity']) ? number_format($char_gil['quantity']) : 0;
   // pull character mission information
   $missions = sqlQuery("SELECT missions FROM `chars` WHERE charid = ".$charid)["missions"];
-  $output = "";
+  //$output = "";
+  $compiled["misisons"]["sandoria"] = "None";
+  $compiled["misisons"]["bastok"] = "None";
+  $compiled["misisons"]["windurst"] = "None";
+  $compiled["misisons"]["zilart"] = "None";
+  $compiled["misisons"]["toau"] = "None";
+  $compiled["misisons"]["wotg"] = "None";
+  $compiled["misisons"]["cop"] = "None";
+  $compiled["missions"]["campaign"] = "None";
+  $compiled["missions"]["acp"] = "None";
+  $compiled["missions"]["mxd"] = "None";
+  $compiled["missions"]["asa"] = "None";
+  $compiled["missions"]["soa"] = "None";
   $kid = unpack('C*', $missions);
   $kida = array_merge($kid, $mission_array);
    
