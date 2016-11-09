@@ -402,17 +402,29 @@ if (isset($_GET['id'])) {
   $tmp = mysqli_query($dcon, $sql);
   while($row = $tmp->fetch_assoc()) {
     $crafting[$row['skillid']] = $row['value'];
+    $craftrank[$row['skillid']] = (($row['rank'] + 1) * 10);
   }
   $compiled['fishing'] = isset($crafting[48]) ? $crafting[48] / 10 : 0;
+  $compiled['fishingrank'] = isset($craftrank[48]) ? $crafrank[48] : 0;
   $compiled['woodworking'] = isset($crafting[49]) ? $crafting[49] / 10 : 0;
+  $compiled['woodworkingrank'] = isset($craftrank[49]) ? $craftrank[49] : 0;
   $compiled['smithing'] = isset($crafting[50]) ? $crafting[50] / 10 : 0;
+  $compiled['smithingrank'] = isset($craftrank[50]) ? $craftrank[50] : 0;
   $compiled['goldsmithing'] = isset($crafting[51]) ? $crafting[51] / 10 : 0;
+  $compiled['goldsmithingrank'] = isset($craftrank[51]) ? $craftrank[51] : 0;
   $compiled['clothcraft'] = isset($crafting[52]) ? $crafting[52] / 10 : 0;
+  $compiled['clothcraftrank'] = isset($craftrank[52]) ? $craftrank[52] : 0;
   $compiled['leathercraft'] = isset($crafting[53]) ? $crafting[53] / 10 : 0;
+  $compiled['leathercraftrank'] = isset($craftrank[53]) ? $craftrank[53] : 0;
   $compiled['bonecraft'] = isset($crafting[54]) ? $crafting[54] / 10 : 0;
+  $compiled['bonecraftrank'] = isset($craftrank[54]) ? $craftrank[54] : 0;
   $compiled['alchemy'] = isset($crafting[55]) ? $crafting[55] / 10 : 0;
+  $compiled['alchemyrank'] = isset($craftrank[55]) ? $craftrank[55] : 0;
   $compiled['cooking'] = isset($crafting[56]) ? $crafting[56] / 10 : 0;
+  $compiled['cookingrank'] = isset($craftrank[56]) ? $craftrank[56] : 0;
   $compiled['synergy'] = isset($crafting[57]) ? $crafting[57] / 10 : 0;
+  $compiled['synergyrank'] = isset($craftrank[57]) ? $craftrank[57] : 0;
+
   // get rank information
   $char_ranks_data = sqlQuery("SELECT rank_sandoria, rank_bastok, rank_windurst FROM `char_profile` WHERE charid = ".$charid);
   $compiled['rank_sandoria'] = isset($char_ranks_data['rank_sandoria']) ? $char_ranks_data['rank_sandoria'] : 1;
@@ -634,35 +646,35 @@ if (isset($_GET['id'])) {
     default:
     case 1:
       $char_img = "images/mini_face/hh";
-      $char_race = "H&#9792;";
+      $char_race = "H&#9794;";
       break;
     case 2:
       $char_img = "images/mini_face/h";
-      $char_race = "H&#9794;";
+      $char_race = "H&#9792;";
       break;
     case 3:
       $char_img = "images/mini_face/ee";
-      $char_race = "E&#9792;";
+      $char_race = "E&#9794;";
       break;
     case 4:
       $char_img = "images/mini_face/e";
-      $char_race = "E&#9794;";
+      $char_race = "E&#9792;";
       break;
     case 5:
       $char_img = "images/mini_face/t";
-      $char_race = "T&#9792;";
+      $char_race = "T&#9794;";
       break;
     case 6:
       $char_img = "images/mini_face/tt";
-      $char_race = "T&#9794;";
+      $char_race = "T&#9792;";
       break;
     case 7:
       $char_img = "images/mini_face/m";
-      $char_race = "M&#9794;";
+      $char_race = "M&#9792;";
       break;
     case 8:
       $char_img = "images/mini_face/g";
-      $char_race = "G&#9792;";
+      $char_race = "G&#9794;";
       break;
   }
   switch ($char_look['face']) {
@@ -750,10 +762,10 @@ if (isset($_GET['id'])) {
     else
       $ah[$z]['seller'] = $row['seller_name'];
     $ah[$z]['price'] = number_format($row['sale']);
-    //$ah[$z]['date'] = trim(date("m/d/Y h:ia",$row['sell_date']), "m");
-    $timestamp = new DateTime(date("m/d/Y h:i:s",$row['sell_date']));
-    //$timestamp->add(new DateInterval("PT9H"));
-    $ah[$z]['date'] = trim($timestamp->format("m/d/Y h:ia"), "m");
+    //$timestamp = new DateTime(date("m/d/Y h:i:s",$row['sell_date']));
+    //$ah[$z]['date'] = trim($timestamp->format("m/d/Y h:ia"), "m");
+	$timestamp = new DateTime(date("Y-m-d H:i:s",$row['sell_date']));
+	$ah[$z]["date"] = trim($timestamp->format("m/d/Y h:ia"), "m");
     $z++;
   }
   $compiled['ah'] = $ah;

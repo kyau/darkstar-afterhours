@@ -1242,7 +1242,9 @@ if (isset($_GET['id'])) {
         else
           $ah[$z]["seller"] = $row['seller_name'];
         $ah[$z]["price"] = number_format($row["sale"]);
-        $ah[$z]["date"] = trim(date("m/d/Y h:ia", $row["sell_date"]), "m");
+        //$ah[$z]["date"] = trim(date("m/d/Y h:ia", $row["sell_date"]), "m");
+        $timestamp = new DateTime(date("Y-m-d H:i:s",$row['sell_date']));
+        $ah[$z]["date"] = trim($timestamp->format("m/d/Y h:ia"), "m");
         $z++;
       }
       $compiled["ah"] = $ah;

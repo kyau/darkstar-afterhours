@@ -42,16 +42,58 @@ function getPlayer() {
 					$("#auto_subjob").html("/"+jsonData.subjob);
 				else
 					$("#auto_subjob").html("");
-				$("#auto_smithing").html(jsonData.smithing.toFixed(1));
-				$("#auto_clothcraft").html(jsonData.clothcraft.toFixed(1));
-				$("#auto_alchemy").html(jsonData.alchemy.toFixed(1));
-				$("#auto_woodworking").html(jsonData.woodworking.toFixed(1));
-				$("#auto_goldsmithing").html(jsonData.goldsmithing.toFixed(1));
-				$("#auto_leathercraft").html(jsonData.leathercraft.toFixed(1));
-				$("#auto_bonecraft").html(jsonData.bonecraft.toFixed(1));
-				$("#auto_cooking").html(jsonData.cooking.toFixed(1));
-				$("#auto_fishing").html(jsonData.fishing.toFixed(1));
-				$("#auto_synergy").html(jsonData.synergy.toFixed(1));
+
+				if (jsonData.smithing == jsonData.smithingrank && jsonData.smithing != 0) {
+					$("#auto_smithing").html("<span class=\"capped\">"+jsonData.smithing.toFixed(1)+"</span>");
+				} else {
+					$("#auto_smithing").html(jsonData.smithing.toFixed(1));
+				}
+				if (jsonData.clothcraft == jsonData.clothcraftrank && jsonData.clothcraft != 0) {
+					$("#auto_clothcraft").html("<span class=\"capped\">"+jsonData.clothcraft.toFixed(1)+"</span>");
+				} else {
+					$("#auto_clothcraft").html(jsonData.clothcraft.toFixed(1));
+				}
+				if (jsonData.alchemy == jsonData.alchemyrank && jsonData.alchemy != 0) {
+					$("#auto_alchemy").html("<span class=\"capped\">"+jsonData.alchemy.toFixed(1)+"</span>");
+				} else {
+					$("#auto_alchemy").html(jsonData.alchemy.toFixed(1));
+				}
+				if (jsonData.woodworking == jsonData.woodworkingrank && jsonData.woodworking != 0) {
+					$("#auto_woodworking").html("<span class=\"capped\">"+jsonData.woodworking.toFixed(1)+"</span>");
+				} else {
+					$("#auto_woodworking").html(jsonData.woodworking.toFixed(1));
+				}
+				if (jsonData.goldsmithing == jsonData.goldsmithingrank && jsonData.goldsmithing != 0) {
+					$("#auto_goldsmithing").html("<span class=\"capped\">"+jsonData.goldsmithing.toFixed(1)+"</span>");
+				} else {
+					$("#auto_goldsmithing").html(jsonData.goldsmithing.toFixed(1));
+				}
+				if (jsonData.leathercraft == jsonData.leathercraftrank && jsonData.leathercraft != 0) {
+					$("#auto_leathercraft").html("<span class=\"capped\">"+jsonData.leathercraft.toFixed(1)+"</span>");
+				} else {
+					$("#auto_leathercraft").html(jsonData.leathercraft.toFixed(1));
+				}
+				if (jsonData.bonecraft == jsonData.bonecraftrank && jsonData.bonecraft != 0) {
+					$("#auto_bonecraft").html("<span class=\"capped\">"+jsonData.bonecraft.toFixed(1)+"</span>");
+				} else {
+					$("#auto_bonecraft").html(jsonData.bonecraft.toFixed(1));
+				}
+				if (jsonData.cooking == jsonData.cookingrank && jsonData.cooking != 0) {
+					$("#auto_cooking").html("<span class=\"capped\">"+jsonData.cooking.toFixed(1)+"</span>");
+				} else {
+					$("#auto_cooking").html(jsonData.cooking.toFixed(1));
+				}
+				if (jsonData.fishing == jsonData.fishingrank && jsonData.fishing != 0) {
+					$("#auto_fishing").html("<span class=\"capped\">"+jsonData.fishing.toFixed(1)+"</span>");
+				} else {
+					$("#auto_fishing").html(jsonData.fishing.toFixed(1));
+				}
+				if (jsonData.synergy == jsonData.synergyrank && jsonData.synergy != 0) {
+					$("#auto_synergy").html("<span class=\"capped\">"+jsonData.synergy.toFixed(1)+"</span>");
+				} else {
+					$("#auto_synergy").html(jsonData.synergy.toFixed(1));
+				}
+
 				if (jsonData.jobs.genkai == jsonData.jobs.war) {
 					$("#auto_war").html("<span class=\"capped\">"+jsonData.jobs.war+"</span>");
 				} else {

@@ -4,7 +4,7 @@ $clock = true;
 require("include/html.inc");
 
 htmlHeader();
-htmlDropDown(2);
+htmlDropDown(3);
 
 echo <<<EOF
 	</div>

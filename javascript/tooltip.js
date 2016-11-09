@@ -84,4 +84,13 @@ $(function() {
 		iID = $(this).data("id");
 		window.location.href = "https://" + location.host + '/ah/' + iID;
 	});
+	$(document).on("click", ".shoplink", function (){
+		iID = $(this).data("id");
+		window.location.href = "https://" + location.host + '/shops/' + iID;
+	});
+	$(document).on("click", ".recipelink", function (){
+		iCraft = $(this).data("craft");
+		iRank = $(this).data("rank");
+		window.location.href = "https://" + location.host + '/recipes/' + iCraft + '/' + iRank;
+	});
 });

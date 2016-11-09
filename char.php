@@ -37,7 +37,7 @@ require("include/html.inc");
 
 if (isset($_GET['id'])) {
   htmlHeader(trim($_GET['id'], "/"));
-  htmlDropDown(2);
+  htmlDropDown(3);
 
   echo <<<EOF
     </div>

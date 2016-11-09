@@ -6,14 +6,14 @@ $clock = true;
 require("include/html.inc");
 
 htmlHeader();
-htmlDropDown(4);
+htmlDropDown(5);
 
 echo <<<EOF
     </div>
     <div id="content">
       <table class="tbl tbl-text">
         <thead><tr class="tbl-head">
-          <th>FAQ</th>
+          <th id="faq">FAQ</th>
         </tr></thead>
         <tbody><tr>
           <td>
@@ -34,24 +34,6 @@ echo <<<EOF
               <li style="disc">Starting Gil: 1,000,000</li>
               <li style="disc">Gil / Kill Modifier: 420</li>
               <li style="disc">CoP Level Cap Removed!</li>
-            </ul>
-            <br/>
-          </td>
-        </tr><tr>
-          <td>
-            <b>What Special Commands Are Available on AfterHours?</b><br/>
-            Given that we run a private server we have provided access to a variety of commands to help you in your time in Vana'diel.<br/><br/>
-            <ul style="margin-left: 22px">
-              <li style="disc"><span>@ah</span> : Access the Auction House from anywhere!</li>
-              <li style="disc"><span>@chocobo</span> : Instantly mount a chocobo.</li>
-              <li style="disc"><span>@escape</span> : Cast the ESCAPE spell on your party.</li>
-              <li style="disc"><span>@goto &lt;char&gt;</span> : Teleport to specified character.</li>
-              <li style="disc"><span>@homepoint</span> : Teleport to your homepoint.</li>
-              <li style="disc"><span>@mogshop &lt;#&gt;</span> : Access a given moogle shop.</li>
-              <li style="disc"><span>@raise &lt;level&gt; &lt;char&gt;</span> : Raise specified character.</li>
-              <li style="disc"><span>@regen</span> : Grant character Protect, Shell, Regen, Refresh & Haste.</li>
-              <li style="disc"><span>@signet</span> : Grant character signet.</li>
-              <li style="disc"><span>@wallhack</span> : Walk through walls (toggle).</li>
             </ul>
             <br/>
           </td>
@@ -78,7 +60,31 @@ echo <<<EOF
         </tr><tr>
           <td>
             <b>How Can I Talk With Others?</b><br/>
-            While we do have an 'AfterHours' linkshell, I have also enabled /say to be serverwide (it will show up like a unity message).<br/><br/>
+            While we do have an 'AfterHours' linkshell, I have also enabled /say to be serverwide (it will show up like a unity message).<br/>
+          </td>
+        </tr></tbody>
+      </table>
+      <br/><br/>
+      <table class="tbl tbl-text">
+        <thead><tr class="tbl-head">
+          <th id="commands">Commands</th>
+        </tr></thead>
+        <tbody><tr>
+          <td>
+            <b>What Special Commands Are Available on AfterHours?</b><br/>
+            Given that we run a private server we have provided access to a variety of commands to help you in your time in Vana'diel.<br/><br/>
+            <ul style="margin-left: 22px">
+              <li style="disc"><span>@ah</span> : Access the Auction House from anywhere!</li>
+              <li style="disc"><span>@chocobo</span> : Instantly mount a chocobo.</li>
+              <li style="disc"><span>@escape</span> : Cast the ESCAPE spell on your party.</li>
+              <li style="disc"><span>@goto &lt;char&gt;</span> : Teleport to specified character.</li>
+              <li style="disc"><span>@homepoint</span> : Teleport to your homepoint.</li>
+              <li style="disc"><span>@mogshop &lt;#&gt;</span> : Access a given moogle shop.</li>
+              <li style="disc"><span>@raise &lt;level&gt; &lt;char&gt;</span> : Raise specified character.</li>
+              <li style="disc"><span>@regen</span> : Grant character Protect, Shell, Regen, Refresh & Haste.</li>
+              <li style="disc"><span>@signet</span> : Grant character signet.</li>
+              <li style="disc"><span>@wallhack</span> : Walk through walls (toggle).</li>
+            </ul>
           </td>
         </tr></tbody>
       </table>

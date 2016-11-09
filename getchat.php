@@ -73,13 +73,15 @@ $compiled = array();
 $sql = "SELECT speaker, message, datetime FROM `audit_chat` WHERE type = 'SAY' ORDER BY datetime DESC LIMIT 8;";
 $tmp = mysqli_query($dcon, $sql);
 $num = 0;
+date_default_timezone_set('America/Los_Angeles');
 while($row = $tmp->fetch_assoc()) {
   $arr = array();
   $arr['name'] = $dcon->real_escape_string($row['speaker']);
   $chars = sqlQuery("SELECT charid FROM `chars` WHERE charname = '".$arr['name']."'");
   $arr['charid'] = $dcon->real_escape_string($chars['charid']);
   $stamp = strtotime($dcon->real_escape_string($row['datetime']));
-  $timestamp = new DateTime(date("m/d/Y h:i:s",$stamp));
+  $timestamp = new DateTime(date("Y-m-d H:i:s",$stamp));
+  $timestamp->sub(new DateInterval('PT3H'));
   $arr['timestamp'] = trim($timestamp->format("m/d/Y h:ia"), "m");
   $arr['message'] = mdecode(parseAutoTranslate(mencode($row['message'])));
   $compiled[$num] = $arr;

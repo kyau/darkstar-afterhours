@@ -129,6 +129,10 @@ EOF;
     $html .= "  <script type=\"text/javascript\" src=\"javascript/item.js\"></script>\n";
   } else if ($add == "ah") { 
     $html .= "  <script type=\"text/javascript\" src=\"javascript/ah.js\"></script>\n";
+  } else if ($add == "recipes") { 
+    $html .= "  <script type=\"text/javascript\" src=\"javascript/recipes.js\"></script>\n";
+  } else if ($add == "shops") { 
+    $html .= "  <script type=\"text/javascript\" src=\"javascript/shops.js\"></script>\n";
   } else if ($add == "search") { 
     $html .= "  <script type=\"text/javascript\" src=\"javascript/search.js\"></script>\n";
   } else {
@@ -151,7 +155,7 @@ EOF;
 
 function htmlDropDown($loc = 0) {
 echo <<<EOF
-          <div id="dropdown">
+          <div class="dropdown">
             <ul>
 EOF;
 $addclass = "";
@@ -163,12 +167,17 @@ if ($loc == 0) {
 printf("              <li%s><a href=\"/\"><i class=\"fa fa-refresh\" aria-hidden=\"true\"></i>%s</a></li>", $addclass, $current);
 $current = "";
 $addclass = "";
-if ($loc == 1) $addclass = " current";
-printf("              <li class=\"has-sub%s\"><a href=\"/db/\"><i class=\"fa fa-database\" aria-hidden=\"true\"></i></a>", $addclass);
+if ($loc == 1) {
+  $addclass = " current";
+  $current = " AH";
+}
+printf("              <li class=\"has-sub%s\"><a href=\"/ah/\"><i class=\"fa fa-balance-scale\" aria-hidden=\"true\"></i>%s</a>", $addclass, $current);
 $current = "";
 $addclass = "";
 echo <<<EOF
                 <ul>
+                  <li><a class="menu-head"><span>Auction House</span></a></li>
+                  <li role=separator" class="divider"></li>
                   <li class="has-sub"><a class="link"><span>Weapons</span></a>
                   <ul>
                     <li><a class="link catlink" data-id="1"><span>Hand to Hand</span></a></li>
@@ -264,26 +273,203 @@ echo <<<EOF
                 </ul>
               </li>
 EOF;
+if ($loc == 6) {
+  $addclass = " current recipemenu";
+  $current = " Recipes";
+}
+printf("              <li class=\"has-sub%s\"><a href=\"/recipes/\"><i class=\"fa fa-diamond\" aria-hidden=\"true\"></i>%s</a>", $addclass, $current);
+print <<<EOF
+                <ul>
+                  <li><a class="menu-head"><span>Recipes</span></a></li>
+                  <li role=separator" class="divider"></li>
+                  <li class="has-sub"><a class="link"><span>Alchemy</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub"><a class="link"><span>Bonecraft</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Bone" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub"><a class="link"><span>Clothcraft</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cloth" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub"><a class="link"><span>Cooking</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Cook" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub"><a class="link"><span>Goldsmithing</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Gold" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub"><a class="link"><span>Leathercraft</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Leather" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub"><a class="link"><span>Smithing</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Smith" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                  <li class="has-sub"><a class="link"><span>Woodworking</span></a>
+                    <ul>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="Wood" data-rank="12">Authority<span></a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+EOF;
+$current = "";
+$addclass = "";
 if ($loc == 2) {
+  $addclass = " current shopsmenu";
+  $current = " Shops";
+}
+printf("              <li class=\"has-sub%s\"><a href=\"/shops/\"><i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i>%s</a>", $addclass, $current);
+print <<<EOF
+                <ul>
+                  <li><a class="menu-head"><span>Custom Shops</span></a></li>
+                  <li role=separator" class="divider"></li>
+                  <li class="has-sub"><a class="link"><span>Mogshops</span></a>
+                    <ul>
+                      <li><a class="link shoplink" data-id="1">Crystal Depot<span></a></li>
+                      <li><a class="link shoplink" data-id="2">Pharmacy<span></a></li>
+                      <li><a class="link shoplink" data-id="3">MogDonald's<span></a></li>
+                      <li><a class="link shoplink" data-id="4">Tools<span></a></li>
+                      <li><a class="link shoplink" data-id="5">National Hero Specials<span></a></li>
+                      <li><a class="link shoplink" data-id="6">Mighty Hero Specials<span></a></li>
+                      <li><a class="link shoplink" data-id="7">Chains-Breaker Specials<span></a></li>
+                    </ul>
+                  </li>
+                  <li><a class="link shoplink" data-id="10"><span>Curio Moogles</span></a></li>
+                </ul>
+              </li>
+EOF;
+$current = "";
+$addclass = "";
+if ($loc == 3) {
   $addclass = " class=\"current\"";
   $current = " Users";
 }
 printf("              <li%s><a href=\"/users/\"><i class=\"fa fa-users\" aria-hidden=\"true\"></i>%s</a></li>", $addclass, $current);
 $current = "";
 $addclass = "";
-if ($loc == 3) {
+if ($loc == 4) {
   $addclass = " class=\"current\"";
   $current = " Download";
 }
 printf("              <li%s><a href=\"/download/\"><i class=\"fa fa-download\" aria-hidden=\"true\"></i>%s</a></li>", $addclass, $current);
 $current = "";
 $addclass = "";
-if ($loc == 4) {
-  $addclass = " class=\"current\"";
+if ($loc == 5) {
+  $addclass = " class=\"current has-sub helpmenu\"";
   $current = " Help";
+} else {
+  $addclass = " class=\"has-sub\"";
 }
-printf("              <li%s><a href=\"/help/\"><i class=\"fa fa-life-ring\" aria-hidden=\"true\"></i>%s</a></li>", $addclass, $current);
+printf("              <li%s><a href=\"/help/\"><i class=\"fa fa-life-ring\" aria-hidden=\"true\"></i>%s</a>", $addclass, $current);
 print <<<EOF
+                <ul>
+                  <li><a class="menu-head"><span>Getting Help</span></a></li>
+                  <li role=separator" class="divider"></li>
+                  <li><a class="link" href="/help/#commands"><span>Commands</span></a></li>
+                  <li><a class="link" href="/help/#faq"><span>FAQ</span></a></li>
+                </ul>
+              </li>
             </ul>
           </div>
 EOF;

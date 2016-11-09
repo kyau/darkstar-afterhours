@@ -1,7 +1,7 @@
 <?php
 
 $clock = true;
-require("include/html.inc");
+#require("include/html.inc");
 
 htmlHeader();
 htmlDropDown(1);
