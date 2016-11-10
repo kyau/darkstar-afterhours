@@ -67,7 +67,7 @@ function getRecipeCategory() {
 					html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\">"+item[1]+"</a>";
 					html += " <span class=\"lightgray\">x"+recipe.resultcount+"</span></td>";
 					html += "</tr>";
-					if (recipe.resulthq1 != recipe.result) {
+					if ((recipe.resulthq1 != recipe.result || recipe.resulthq1count != recipe.resultcount)) {
 						item = recipe.resulthq1.split(":");
 						html += "<tr>";
 						html += "<td>HQ1: </td>";
@@ -76,7 +76,7 @@ function getRecipeCategory() {
 						html += " <span class=\"lightgray\">x"+recipe.resulthq1count+"</span></td>";
 						html += "</tr>";
 					}
-					if (recipe.resulthq2 != recipe.result && recipe.resulthq2 != recipe.resulthq1) {
+					if ((recipe.resulthq2 != recipe.result || recipe.resulthq2count != recipe.resultcount) && (recipe.resulthq2 != recipe.resulthq1 || recipe.resulthq2count != recipe.resulthq1count)) {
 						item = recipe.resulthq2.split(":");
 						html += "<tr>";
 						html += "<td>HQ2: </td>";
@@ -85,7 +85,7 @@ function getRecipeCategory() {
 						html += " <span class=\"lightgray\">x"+recipe.resulthq2count+"</span></td>";
 						html += "</tr>";
 					}
-					if (recipe.resulthq3 != recipe.result && recipe.resulthq3 != recipe.resulthq2 && recipe.resulthq3 != recipe.resulthq1) {
+					if ((recipe.resulthq3 != recipe.result || recipe.resulthq3count != recipe.resultcount) && (recipe.resulthq3 != recipe.resulthq1 || recipe.resulthq3count != recipe.resulthq1count) && (recipe.resulthq3 != recipe.resulthq2 || recipe.resulthq3count != recipe.resulthq2count)) {
 						item = recipe.resulthq3.split(":");
 						html += "<tr>";
 						html += "<td>HQ3: </td>";
