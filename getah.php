@@ -39,13 +39,20 @@ if (isset($_GET['id'])) {
 			$level = 0;
 		$items[$count]["level"] = $level;
 		$stacked = 0;
-		if (intval($item["stackSize"]) > 1)
+		if (intval($item["stackSize"]) > 1) {
 			$stacked = 1;
-		$price = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$item["itemid"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = ".$stacked)["price"];
+			$stackedprice = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$item["itemid"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = ".$stacked)["price"];
+			$stackedinstock = sqlQuery("SELECT COUNT(*) FROM `auction_house` WHERE itemid = ".$item["itemid"]." AND seller_name = 'DarkStar' AND buyer_name IS NULL AND stack = 1")["COUNT(*)"];
+			$items[$count]["stackedinstock"] = $stackedinstock;
+			if (!isset($stackedprice))
+				$stackedprice = "0";
+			$items[$count]["stackedprice"] = number_format($stackedprice);
+		}
+		$price = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$item["itemid"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
 		if (!isset($price))
 			$price = "0";
 		$items[$count]["price"] = number_format($price);
-		$instock = sqlQuery("SELECT COUNT(*) FROM `auction_house` WHERE itemid = ".$item["itemid"]." AND seller_name = 'DarkStar' AND buyer_name IS NULL")["COUNT(*)"];
+		$instock = sqlQuery("SELECT COUNT(*) FROM `auction_house` WHERE itemid = ".$item["itemid"]." AND seller_name = 'DarkStar' AND buyer_name IS NULL AND stack = 0")["COUNT(*)"];
 		$items[$count]["instock"] = $instock;
 		$weapon = sqlQuery("SELECT * FROM `item_weapon` WHERE itemid = ".$item["itemid"]);
 	    $dps = 0;

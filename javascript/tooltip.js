@@ -34,7 +34,7 @@ function PopulateTooltip(iid, stack, signature, handle) {
 					$(".t_jobs").html("");
 					$(".t_stats").html(jsonData.description);
 				}
-				if (signature != "") {
+				if (typeof signature !== "undefined" && signature != "") {
 					$(".t_signature").html("["+signature+"]");
 				}
 				

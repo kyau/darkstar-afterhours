@@ -34,22 +34,33 @@ function getAHCategory() {
 					var category = $("#ahcat").text();
 					$(document).prop('title', 'AfterHours - ' + category);
 					var html = "";
-					var stackhtml = "";
-					if (item.stack > 1)
-						stackhtml = "?stack=1";
 					html += "<tr>";
-					html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"1\" href=\"/item/"+item.itemid+stackhtml+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
-					html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"1\" href=\"/item/"+item.itemid+stackhtml+"\">"+item.itemname+"</a>";
-					if (item.stack > 1)
-						html += " x" + item.stack;
+					html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"0\" href=\"/item/"+item.itemid+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
+					html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"0\" href=\"/item/"+item.itemid+"\">"+item.itemname+"</a>";
 					html += "</td>";
 					html += "<td class=\"center\">"+item.level+"</td>";
 					if (ahcat < 14 || ahcat == 15)
 						html += "<td class=\"center\">"+item.dps+"</td>";
-					html += "<td class=\"center\">"+item.price+"</td>";
-					html += "<td class=\"center\">"+item.instock+"</td>";
+					html += "<td class=\"center\">"+item.stackedprice+"</td>";
+					html += "<td class=\"center\">"+item.stackedinstock+"</td>";
 					html += "</tr>";
 					$("#auctions").append(html);
+					var html = "";
+					var stackhtml = "";
+					if (item.stack > 1) {
+						html += "<tr>";
+						html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"1\" href=\"/item/"+item.itemid+"?stack=1\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
+						html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"1\" href=\"/item/"+item.itemid+"?stack=1\">"+item.itemname+"</a>";
+						html += " x" + item.stack;
+						html += "</td>";
+						html += "<td class=\"center\">"+item.level+"</td>";
+						if (ahcat < 14 || ahcat == 15)
+							html += "<td class=\"center\">"+item.dps+"</td>";
+						html += "<td class=\"center\">"+item.price+"</td>";
+						html += "<td class=\"center\">"+item.instock+"</td>";
+						html += "</tr>";
+						$("#auctions").append(html);
+					}
 				});
 				$(".tbl-ahcat").tablesorter({
 					headers: {
