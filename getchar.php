@@ -534,6 +534,7 @@ if (isset($_GET['id'])) {
   //echo var_dump($missionarray);
   // get current equipment
   $equipment = array();
+  $equipsig = array();
   $slot = 0;
   for ($i = 0; $i < 16; $i++) {
     switch ($i) {
@@ -582,62 +583,81 @@ if (isset($_GET['id'])) {
     }
     $tmpequip = sqlQuery("SELECT * FROM `char_inventory` WHERE charid = ".$charid." AND location = (SELECT containerid FROM `char_equip` WHERE charid = ".$charid." AND equipslotid = ".$i.") AND slot = (SELECT slotid FROM `char_equip` WHERE charid = ".$charid." AND equipslotid = ".$i.")");
     $equipment[$slot] = isset($tmpequip['itemId']) ? $tmpequip['itemId'] : "0";
+    $equipsig[$slot] = isset($tmpequip['signature']) ? $tmpequip['signature'] : "";
     //$equipment[$i] = isset($tmpequip['itemId']) ? $tmpequip['itemId'] : "0";
   }
   $sortedequip = array();
+  $sortedsig = array();
   for ($i = 0; $i < 16; $i++) {
     switch ($i) {
       case 0:
         $sortedequip[0] = $equipment[$i];
+        $sortedsig[0] = $equipsig[$i];
         break;
       case 1:
         $sortedequip[1] = $equipment[$i];
+        $sortedsig[1] = $equipsig[$i];
         break;
       case 2:
         $sortedequip[2] = $equipment[$i];
+        $sortedsig[2] = $equipsig[$i];
         break;
       case 3:
         $sortedequip[3] = $equipment[$i];
+        $sortedsig[3] = $equipsig[$i];
         break;
       case 4:
         $sortedequip[4] = $equipment[$i];
+        $sortedsig[4] = $equipsig[$i];
         break;
       case 5:
         $sortedequip[5] = $equipment[9];
+        $sortedsig[5] = $equipsig[9];
         break;
       case 6:
         $sortedequip[6] = $equipment[11];
+        $sortedsig[6] = $equipsig[11];
         break;
       case 7:
         $sortedequip[7] = $equipment[12];
+        $sortedsig[7] = $equipsig[12];
         break;
       case 8:
         $sortedequip[8] = $equipment[5];
+        $sortedsig[8] = $equipsig[5];
         break;
       case 9:
         $sortedequip[9] = $equipment[6];
+        $sortedsig[9] = $equipsig[6];
         break;
       case 10:
         $sortedequip[10] = $equipment[13];
+        $sortedsig[10] = $equipsig[13];
         break;
       case 11:
         $sortedequip[11] = $equipment[14];
+        $sortedsig[11] = $equipsig[14];
         break;
       case 12:
         $sortedequip[12] = $equipment[15];
+        $sortedsig[12] = $equipsig[15];
         break;
       case 13:
         $sortedequip[13] = $equipment[10];
+        $sortedsig[13] = $equipsig[10];
         break;
       case 14:
         $sortedequip[14] = $equipment[7];
+        $sortedsig[14] = $equipsig[7];
         break;
       case 15:
         $sortedequip[15] = $equipment[8];
+        $sortedsig[15] = $equipsig[0];
         break;
     }
   }
   $compiled['equip'] = $sortedequip;
+  $compiled['equipsig'] = $sortedsig;
   // get current race/sex/face
   $char_look = sqlQuery("SELECT face, race FROM `char_look` WHERE charid = ".$charid);
   $char_img = "";

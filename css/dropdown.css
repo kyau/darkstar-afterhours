@@ -91,6 +91,10 @@
 .dropdown ul li.current.shopsmenu > div {
   left: -6px;
 }
+.dropdown ul li.current.recipemenu > ul,
+.dropdown ul li.current.recipemenu > div {
+  left: -4px;
+}
 .dropdown ul ul ul {position:absolute;}
 .dropdown ul ul li:hover > ul {
   left:100%;

@@ -29,7 +29,7 @@ weakIcon = new Array("ws_ice.png", "ws_lightning.png", "ws_fire.png", "ws_earth.
 PhaseName = new Array("Full Moon","Waning Gibbous","Last Quarter","Waning Crescent","New Moon","Waxing Crescent","First Quarter","Waxing Gibbous");
 PhaseIcon = new Array("m_full.png","m_wangibbous.png","m_last.png","m_wancrescent.png","m_new.png","m_waxcrescent.png","m_first.png","m_waxgibbous.png");
 
-sMonth = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+sMonth = new Array("", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 //RSErace = new Array("M. Hume","F. Hume","M. Elvaan","F. Elvaan","M. TaruTaru","F. TaruTaru","Mithra","Galka");
 //RSEloc = new Array("Gusgen Mines","Shakrami Maze","Ordelle Caves");
 //BoatSched = new Array("08:00", "16:00", "00:00");

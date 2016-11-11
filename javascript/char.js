@@ -233,7 +233,7 @@ function getPlayer() {
 							eq = 16;
 						tmp = '<div id="auto_equip'+z+'" class="equipslot"><img src="images/eq'+eq+'.gif" /></div>';
 					} else {
-						tmp = '<div id="auto_equip'+z+'" class="equipslot"><a class="tip" data-id="'+item+'" data-stack="1" href="/item/'+item+'"><img src="images/large-icons/'+item+'.png" class="icon" /></a></div>';
+						tmp = '<div id="auto_equip'+z+'" class="equipslot"><a class="tip" data-id="'+item+'" data-stack="1" data-signature="'+jsonData.equipsig[i]+'" href="/item/'+item+'"><img src="images/large-icons/'+item+'.png" class="icon" /></a></div>';
 					}
 					$("#auto_equip"+i.toString()).html(tmp);
 					z = z + 1;

@@ -246,6 +246,9 @@ td.icon { width: 16px; }
 .tbl-recipes a, .tbl-ahcat a { color: rgba(230,230,230,1); }
 .tbl-ahcats a { color: rgba(119,170,255,1); }
 .tbl-ahcats > tbody > tr:hover {background-color: transparent;}
+.tbl-recipes > tbody#recipes > tr:not(:last-child) {
+	border-bottom: 2px solid rgba(60,60,60,1);
+}
 img.mini-icon { vertical-align: text-bottom; }
 .tbl-ah img.mini-icon { vertical-align: text-bottom; position: relative; top: -1px; }
 .center { text-align: center !important; }
@@ -398,6 +401,13 @@ img.mini-icon { vertical-align: text-bottom; }
   float: right;
   position: relative;
   top: 4px;
+  margin-right: 3px;
+}
+.item .t_signature {
+  color: rgba(250,250,250,1);
+  float: right;
+  position: relative;
+  bottom: 4px;
   margin-right: 3px;
 }
 .item .t_rare, .item .t_ex,

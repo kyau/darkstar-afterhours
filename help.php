@@ -77,9 +77,11 @@ echo <<<EOF
               <li style="disc"><span>@ah</span> : Access the Auction House from anywhere!</li>
               <li style="disc"><span>@chocobo</span> : Instantly mount a chocobo.</li>
               <li style="disc"><span>@escape</span> : Cast the ESCAPE spell on your party.</li>
+              <li style="disc"><span>@fireworks</span> : Access the fireworks shop.</li>
               <li style="disc"><span>@goto &lt;char&gt;</span> : Teleport to specified character.</li>
               <li style="disc"><span>@homepoint</span> : Teleport to your homepoint.</li>
               <li style="disc"><span>@mogshop &lt;#&gt;</span> : Access a given moogle shop.</li>
+              <li style="disc"><span>@noobshop</span> : Access the noob shop (Lv1 RaEx Gear).</li>
               <li style="disc"><span>@raise &lt;level&gt; &lt;char&gt;</span> : Raise specified character.</li>
               <li style="disc"><span>@regen</span> : Grant character Protect, Shell, Regen, Refresh & Haste.</li>
               <li style="disc"><span>@signet</span> : Grant character signet.</li>

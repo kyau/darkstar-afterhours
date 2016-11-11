@@ -6,25 +6,26 @@ $clock = true;
 require("include/html.inc");
 
 if (isset($_GET['id'])) {
-  $sql = "SELECT itemid, name, stackSize FROM `item_basic` WHERE name LIKE '%".$dcon->real_escape_string($_GET['id'])."%' OR sortname LIKE '%".$dcon->real_escape_string($_GET['id'])."%' ORDER BY name";
+  $sql = "SELECT itemid, realname FROM `item_info` WHERE realname LIKE '%".str_replace(" ", "%", $dcon->real_escape_string($_GET['id']))."%' OR sortname LIKE '%".str_replace(" ", "%", $dcon->real_escape_string($_GET['id']))."%' ORDER BY realname";
   $tmp = mysqli_query($dcon, $sql);
   $items = array();
   $count = 0;
   while($item = $tmp->fetch_assoc()) {
     $items[$count]["itemid"] = intval($item["itemid"]);
-    $name = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$item['itemid'])['realname']);
+    $name = ucwords($item['realname']);
     //$name = str_replace("_", " ", $item["name"]);
     //$name = mb_eregi_replace('\bM{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\b', "strtoupper('\\0')", $name, 'e');
     //$name = ucwords($name);
     $name = str_replace("The", "the", str_replace("Of", "of", $name));
     $items[$count]["itemname"] = $name;
-    $items[$count]["stack"] = intval($item["stackSize"]);
+    $stackSize = sqlQuery("SELECT stackSize FROM `item_basic` WHERE itemid = ".$item["itemid"])["stackSize"];
+    $items[$count]["stack"] = intval($stackSize);
     $level = intval(sqlQuery("SELECT level FROM `item_armor` WHERE itemId = ".$item["itemid"])["level"]);
     if (!isset($level))
       $level = 0;
     $items[$count]["level"] = $level;
     $stacked = 0;
-    if (intval($item["stackSize"]) > 1)
+    if (intval($stackSize) > 1)
       $stacked = 1;
     $price = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$item["itemid"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = ".$stacked)["price"];
     if (!isset($price))

@@ -109,7 +109,7 @@ EOF;
       </tr><tr>
         <td class="item-icon"><img src="images/large-icons/18270.png" class="t_mainicon"></td>
         <td class="item">
-          <span class="t_raex"></span><div class="t_item">Name</div><div class="t_stats">&lt;stats&gt;</div><div class="t_jobs">&lt;jobs&gt;</div>
+          <span class="t_raex"></span><div class="t_item">Name</div><div class="t_stats">&lt;stats&gt;</div><div class="t_jobs">&lt;jobs&gt;</div><span class="t_signature"></span>
         </td>
       </tr><tr>
         <td colspan="2" style="height:1px"></td>

@@ -5,7 +5,7 @@ function ClearTooltip() {
 	$(".tooltip").hide();
 }
 
-function PopulateTooltip(iid, stack, handle) {
+function PopulateTooltip(iid, stack, signature, handle) {
 	$.ajax( {
 		url: "../getitem.php",
 		type: 'get',
@@ -34,6 +34,9 @@ function PopulateTooltip(iid, stack, handle) {
 					$(".t_jobs").html("");
 					$(".t_stats").html(jsonData.description);
 				}
+				if (signature != "") {
+					$(".t_signature").html("["+signature+"]");
+				}
 				
 				$(".tooltip").position({
 					my: "left bottom",
@@ -55,8 +58,9 @@ $("body").on("mouseenter", ".tip", function () {
 	var _this = $(this);
 	var tIID = parseInt($(_this).data("id"));
 	var tStack = parseInt($(_this).data("stack"));
+	var tSignature = $(_this).data("signature");
 	toolTipDHandle = _this;
-	PopulateTooltip(tIID, tStack, _this);
+	PopulateTooltip(tIID, tStack, tSignature, _this);
 	displayingTooltip = true;
 });
 
@@ -68,7 +72,7 @@ $("body").on("mouseleave", ".tip", function () {
 	html += '      </tr><tr>';
 	html += '        <td class="item-icon"><img src="images/large-icons/18270.png" class="t_mainicon"></td>';
 	html += '        <td class="item">';
-	html += '          <span class="t_raex"></span><div class="t_item">Name</div><div class="t_stats">&lt;stats&gt;</div><div class="t_jobs">&lt;jobs&gt;</div>';
+	html += '          <span class="t_raex"></span><div class="t_item">Name</div><div class="t_stats">&lt;stats&gt;</div><div class="t_jobs">&lt;jobs&gt;</div><span class="t_signature"></span>';
 	html += '        </td>';
 	html += '      </tr><tr>';
 	html += '        <td colspan="2" style="height:1px"></td>';
