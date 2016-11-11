@@ -67,7 +67,7 @@ function getRecipeCategory() {
 					html += "<table class=\"tbl-items\"><tbody>";
 					item = recipe.result.split(":");
 					profithtml = "";
-					profit = recipe.ingredientcost - recipe.price;
+					profit = recipe.price - recipe.ingredientcost;
 					if (profit < 0)
 						profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profit))+")</span>";
 					else
@@ -81,7 +81,7 @@ function getRecipeCategory() {
 					if ((recipe.resulthq1 != recipe.result || recipe.resulthq1count != recipe.resultcount)) {
 						item = recipe.resulthq1.split(":");
 						profithtml = "";
-						profithq1 = recipe.ingredientcost - recipe.pricehq1;
+						profithq1 = recipe.pricehq1 - recipe.ingredientcost;
 						if (profithq1 < 0)
 							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq1))+")</span>";
 						else
@@ -96,7 +96,7 @@ function getRecipeCategory() {
 					if ((recipe.resulthq2 != recipe.result || recipe.resulthq2count != recipe.resultcount) && (recipe.resulthq2 != recipe.resulthq1 || recipe.resulthq2count != recipe.resulthq1count)) {
 						item = recipe.resulthq2.split(":");
 						profithtml = "";
-						profithq2 = recipe.ingredientcost - recipe.pricehq2;
+						profithq2 = recipe.pricehq2 - recipe.ingredientcost;
 						if (profithq2 < 0)
 							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq2))+")</span>";
 						else
@@ -111,7 +111,7 @@ function getRecipeCategory() {
 					if ((recipe.resulthq3 != recipe.result || recipe.resulthq3count != recipe.resultcount) && (recipe.resulthq3 != recipe.resulthq1 || recipe.resulthq3count != recipe.resulthq1count) && (recipe.resulthq3 != recipe.resulthq2 || recipe.resulthq3count != recipe.resulthq2count)) {
 						item = recipe.resulthq3.split(":");
 						profithtml = "";
-						profithq3 = recipe.ingredientcost - recipe.pricehq3;
+						profithq3 = recipe.pricehq3 - recipe.ingredientcost;
 						if (profithq3 < 0)
 							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq3))+")</span>";
 						else

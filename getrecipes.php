@@ -49,8 +49,11 @@ if (isset($_GET['cat']) && isset($_GET['rank'])) {
 			} else {
 				$ingredients[$rname] = 1;
 			}
-			$cost = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe[$name]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
-			$recipecost += $cost;
+		}
+		foreach ($ingredients as $key => $quantity) {
+			$itemid = explode(":", $key)[0];
+			$cost = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$itemid." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+			$recipecost += ($cost * $quantity);
 		}
 		$recipes[$count]["ingredients"] = $ingredients;
 		$recipes[$count]["ingredientcost"] = $recipecost;
