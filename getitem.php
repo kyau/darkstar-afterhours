@@ -22,6 +22,12 @@ if (!isset($_GET["tooltip"]))
 else
   $tooltip = $_GET["tooltip"];
 
+if (!isset($_GET["stack"]))
+  $stackSize = 0;
+else
+  $stackSize = $_GET["stack"];
+
+
 $compiled = array();
 $space = " ";
 $jobs = array("GENKAI","WAR","MNK","WHM","BLM","RDM","THF","PLD","DRK","BST","BRD","RNG","SAM","NIN","DRG","SMN","BLU","COR","PUP","DNC","SCH","GEO","RUN");
@@ -35,13 +41,13 @@ $ITEM_FLAG_RARE = 0x8000;
 if (isset($_GET['id'])) {
   $itemid = $_GET['id'];
   $compiled["itemid"] = $itemid;
-  $itemname = str_replace("_", " ", sqlQuery("SELECT name FROM `item_basic` WHERE itemid = ".$itemid)["name"]);
-  $itemname = mb_eregi_replace('\bM{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\b', "strtoupper('\\0')", $itemname, 'e');
-  $itemname = ucwords($itemname);
-  $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
+  //$itemname = str_replace("_", " ", sqlQuery("SELECT name FROM `item_basic` WHERE itemid = ".$itemid)["name"]);
+  //$itemname = mb_eregi_replace('\bM{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})\b', "strtoupper('\\0')", $itemname, 'e');
+  //$itemname = ucwords($itemname);
+  //$itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
 
   // item information
-  $compiled["name"] = $itemname;
+  //$compiled["name"] = $itemname;
   $realname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$itemid)["realname"]);
   $realname = str_replace("The", "the", str_replace("Of", "of", $realname));
   $compiled["realname"] = $realname;
@@ -1202,10 +1208,10 @@ if (isset($_GET['id'])) {
       $stacked = 0;
       if (intval($stack) > 1)
         $stacked = 1;
-      $price = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$itemid." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = ".$stacked)["price"];
+      $price = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$itemid." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = ".$stackSize)["price"];
       if (!isset($price))
         $price = "0";
-      $instock = sqlQuery("SELECT COUNT(*) FROM `auction_house` WHERE itemid = ".$itemid." AND seller_name = 'DarkStar' AND buyer_name IS NULL")["COUNT(*)"];
+      $instock = sqlQuery("SELECT COUNT(*) FROM `auction_house` WHERE itemid = ".$itemid." AND seller_name = 'DarkStar' AND buyer_name IS NULL AND stack = ".$stackSize)["COUNT(*)"];
       if ($instock == 0)
         $compiled["instock"] = "<span class=\"red\">".$instock."</span>";
       else if ($instock == 1)
@@ -1223,7 +1229,7 @@ if (isset($_GET['id'])) {
         $sql = "SELECT * FROM `auction_house` WHERE itemid = ".$itemid." AND stack = 0 ORDER BY `auction_house`.`sell_date` DESC LIMIT 20";
         if ($_GET["stack"] == 1) {
           $sql = "SELECT * FROM `auction_house` WHERE itemid = ".$itemid." AND stack = 1 ORDER BY `auction_house`.`sell_date` DESC LIMIT 20";
-          $itemname .= " x12";
+          $realname .= " x12";
         }
       $tmp = mysqli_query($dcon, $sql);
       $ah = array();

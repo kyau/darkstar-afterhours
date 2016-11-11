@@ -1,3 +1,7 @@
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function loadStartPage() {}
 
 function getRecipeCategory() {
@@ -55,48 +59,103 @@ function getRecipeCategory() {
 						html += " <span class=\"lightgray\">x"+ingredient+"</span></td>";
 						html += "</tr>";
 					});
+					html += "<tr><td colspan=\"3\" class=\"left lightgray\">Total Cost: "+numberWithCommas(recipe.ingredientcost);
 					html += "</tbody></table>"
 					html += "</td>";
 					// Results
 					html += "<td class=\"left vtop\">"
 					html += "<table class=\"tbl-items\"><tbody>";
 					item = recipe.result.split(":");
+					profithtml = "";
+					profit = recipe.ingredientcost - recipe.price;
+					if (profit < 0)
+						profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profit))+")</span>";
+					else
+						profithtml += " <span class=\"green\">+"+numberWithCommas(profit)+"</span>";
 					html += "<tr>";
 					html += "<td>NQ: </td>";
 					html += "<td class=\"icon\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item[0]+".png\" /></a></td>";
 					html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\">"+item[1]+"</a>";
-					html += " <span class=\"lightgray\">x"+recipe.resultcount+"</span></td>";
+					html += " <span class=\"lightgray\">x"+recipe.resultcount+"</span>"+profithtml+"</td>";
 					html += "</tr>";
 					if ((recipe.resulthq1 != recipe.result || recipe.resulthq1count != recipe.resultcount)) {
 						item = recipe.resulthq1.split(":");
+						profithtml = "";
+						profithq1 = recipe.ingredientcost - recipe.pricehq1;
+						if (profithq1 < 0)
+							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq1))+")</span>";
+						else
+							profithtml += " <span class=\"green\">+"+numberWithCommas(profithq1)+"</span>";
 						html += "<tr>";
 						html += "<td>HQ1: </td>";
 						html += "<td class=\"icon\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item[0]+".png\" /></a></td>";
 						html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\">"+item[1]+"</a>";
-						html += " <span class=\"lightgray\">x"+recipe.resulthq1count+"</span></td>";
+						html += " <span class=\"lightgray\">x"+recipe.resulthq1count+"</span>"+profithtml+"</td>";
 						html += "</tr>";
 					}
 					if ((recipe.resulthq2 != recipe.result || recipe.resulthq2count != recipe.resultcount) && (recipe.resulthq2 != recipe.resulthq1 || recipe.resulthq2count != recipe.resulthq1count)) {
 						item = recipe.resulthq2.split(":");
+						profithtml = "";
+						profithq2 = recipe.ingredientcost - recipe.pricehq2;
+						if (profithq2 < 0)
+							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq2))+")</span>";
+						else
+							profithtml += " <span class=\"green\">+"+numberWithCommas(profithq2)+"</span>";
 						html += "<tr>";
 						html += "<td>HQ2: </td>";
 						html += "<td class=\"icon\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item[0]+".png\" /></a></td>";
 						html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\">"+item[1]+"</a>";
-						html += " <span class=\"lightgray\">x"+recipe.resulthq2count+"</span></td>";
+						html += " <span class=\"lightgray\">x"+recipe.resulthq2count+"</span>"+profithtml+"</td>";
 						html += "</tr>";
 					}
 					if ((recipe.resulthq3 != recipe.result || recipe.resulthq3count != recipe.resultcount) && (recipe.resulthq3 != recipe.resulthq1 || recipe.resulthq3count != recipe.resulthq1count) && (recipe.resulthq3 != recipe.resulthq2 || recipe.resulthq3count != recipe.resulthq2count)) {
 						item = recipe.resulthq3.split(":");
+						profithtml = "";
+						profithq3 = recipe.ingredientcost - recipe.pricehq3;
+						if (profithq3 < 0)
+							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq3))+")</span>";
+						else
+							profithtml += " <span class=\"green\">+"+numberWithCommas(profithq3)+"</span>";
 						html += "<tr>";
 						html += "<td>HQ3: </td>";
 						html += "<td class=\"icon\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item[0]+".png\" /></a></td>";
 						html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\">"+item[1]+"</a>";
-						html += " <span class=\"lightgray\">x"+recipe.resulthq3count+"</span></td>";
+						html += " <span class=\"lightgray\">x"+recipe.resulthq3count+"</span>"+profithtml+"</td>";
 						html += "</tr>";
 					}
 					html += "</tbody></table>"
 					html += "</td>";
 					html += "</tr>";
+/*
+					html += "<tr><td colspan=\"3\" class=\"center\">Total Cost: "+numberWithCommas(recipe.ingredientcost)+" &mdash; NQ: ";
+					profit = recipe.ingredientcost - recipe.price;
+					if (profit < 0)
+						html += "<span class=\"red\">"+numberWithCommas(profit)+"</span>";
+					else
+						html += "<span class=\"green\">"+numberWithCommas(profit)+"</span>";
+					if (recipe.pricehq1 != 0) {
+						profithq1 = recipe.ingredientcost - recipe.pricehq1;
+						if (profithq1 < 0)
+							html += " &mdash; HQ1: <span class=\"red\">"+numberWithCommas(profithq1)+"</span>";
+						else
+							html += " &mdash; HQ1: <span class=\"green\">"+numberWithCommas(profithq1)+"</span>";
+					}
+					if (recipe.pricehq2 != 0) {
+						profithq2 = recipe.ingredientcost - recipe.pricehq2;
+						if (profithq2 < 0)
+							html += " &mdash; HQ2: <span class=\"red\">"+numberWithCommas(profithq2)+"</span>";
+						else
+							html += " &mdash; HQ2: <span class=\"green\">"+numberWithCommas(profithq2)+"</span>";
+					}
+					if (recipe.pricehq3 != 0) {
+						profithq3 = recipe.ingredientcost - recipe.pricehq3;
+						if (profithq3 < 0)
+							html += " &mdash; HQ3: <span class=\"red\">"+numberWithCommas(profithq3)+"</span>";
+						else
+							html += " &mdash; HQ3: <span class=\"green\">"+numberWithCommas(profithq3)+"</span>";
+					}
+					html += "</td></tr>";
+*/
 					$("#recipes").append(html);
 				});
 				$(".tbl-recipes").tablesorter();

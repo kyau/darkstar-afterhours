@@ -15,12 +15,6 @@ if (isset($_GET['id'])) {
   echo <<<EOF
     </div>
     <div id="content">
-    <table class="tbl tbl-ahcathead" style="margin-bottom:10px">
-      <tbody><tr>
-        <td class="center"><span class="item-ahcat"></span></td>
-      </tr></tbody>
-    </table>
-    <br/>
 EOF;
 
   //
@@ -53,10 +47,12 @@ EOF;
         <th>Stats</th>
       </tr></thead>
       <tbody><tr>
+        <td class="center"><span class="item-ahcat"></span></td>
+      </tr><tr>
         <td class="center">In Stock: &nbsp;<span class="item-stock"></span></td>
       </tr><tr>
         <td class="center">Price: &nbsp;<span style="color:rgba(180,180,180,1);" class="item-currprice"></span></td>
-      </tr></tbody>
+      </tr><tr>
         <td class="center item-bgwiki"></td>
       </tr></tbody>
     </table>

@@ -36,6 +36,7 @@ if (isset($_GET['cat']) && isset($_GET['rank'])) {
 		$rname = $recipe["Crystal"].":".$cname;
 		$recipes[$count]["crystal"] = $rname;
 		$ingredients = array();
+		$recipecost = 0;
 		for ($i = 1; $i < 9; $i++) {
 			$name = "Ingredient".$i;
 			if ($recipe[$name] == 0)
@@ -48,8 +49,25 @@ if (isset($_GET['cat']) && isset($_GET['rank'])) {
 			} else {
 				$ingredients[$rname] = 1;
 			}
+			$cost = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe[$name]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+			$recipecost += $cost;
 		}
 		$recipes[$count]["ingredients"] = $ingredients;
+		$recipes[$count]["ingredientcost"] = $recipecost;
+
+		$recipes[$count]["price"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe["Result"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+		if ($recipe["Result"] != $recipe["ResultHQ1"])
+			$recipes[$count]["pricehq1"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe["ResultHQ1"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+		else
+			$recipes[$count]["pricehq1"] = 0;
+		if ($recipe["ResultHQ1"] != $recipe["ResultHQ2"])
+			$recipes[$count]["pricehq2"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe["ResultHQ2"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+		else
+			$recipes[$count]["pricehq2"] = 0;
+		if ($recipe["ResultHQ2"] != $recipe["ResultHQ3"])
+			$recipes[$count]["pricehq3"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe["ResultHQ3"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+		else
+			$recipes[$count]["pricehq3"] = 0;
 
 		$itemname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$recipe["Result"])["realname"]);
 		$itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));

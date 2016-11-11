@@ -14,8 +14,13 @@ function getItem() {
 			if (jsonData.itemid == null) {
 				return 0;
 			} else {
-				$(document).prop('title', 'AfterHours - ' + jsonData.realname);
-				$(".i_item").html(jsonData.realname);
+				var realname = "";
+				if (stack)
+					realname = jsonData.realname+" x"+jsonData.stack;
+				else
+					realname = jsonData.realname
+				$(document).prop('title', 'AfterHours - ' + realname);
+				$(".i_item").html(realname);
 				$(".i_mainicon").attr("src", "images/large-icons/" + jsonData.itemid + ".png");
 				if (jsonData.ex == true && jsonData.rare == true) {
 					$(".i_raex").html('<img src="images/icons/g_rare.png" class="i_rare"><img src="images/icons/g_exclusive.png" class="i_ex">');
