@@ -392,6 +392,7 @@ img.mini-icon { vertical-align: text-bottom; }
   padding: 0 10px !important;
 }
 .item img { vertical-align: text-bottom; }
+.item .i_stack,
 .item .t_raex,
 .item .i_raex {
   float: right;
@@ -399,6 +400,7 @@ img.mini-icon { vertical-align: text-bottom; }
   top: 4px;
   margin-right: 3px;
 }
+.item .i_stack > a { color: rgba(119,170,255,1); }
 .item .t_signature {
   color: rgba(250,250,250,1);
   float: right;

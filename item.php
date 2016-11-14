@@ -30,7 +30,7 @@ EOF;
       </tr><tr>
         <td class="item-icon"><img src="images/large-icons/18270.png" class="i_mainicon"></td>
         <td class="item">
-          <span class="i_raex"></span><div class="i_item">Name</div><div class="i_stats">&lt;stats&gt;</div><div class="i_jobs">&lt;jobs&gt;</div>
+          <span class="i_stack"></span><span class="i_raex"></span><div class="i_item">Name</div><div class="i_stats">&lt;stats&gt;</div><div class="i_jobs">&lt;jobs&gt;</div>
         </td>
       </tr><tr>
         <td colspan="2" style="height:1px"></td>

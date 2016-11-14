@@ -15,10 +15,14 @@ function getItem() {
 				return 0;
 			} else {
 				var realname = "";
-				if (stack)
+				if (stack) {
 					realname = jsonData.realname+" x"+jsonData.stack;
-				else
+					$(".i_stack").html("[<a href=\"/item/"+itemid+"\">single</a>]");
+				} else {
 					realname = jsonData.realname
+					if (jsonData.stack > 1)
+						$(".i_stack").html("[<a href=\"/item/"+itemid+"?stack=1\">stack</a>]");
+				}
 				$(document).prop('title', 'AfterHours - ' + realname);
 				$(".i_item").html(realname);
 				$(".i_mainicon").attr("src", "images/large-icons/" + jsonData.itemid + ".png");
