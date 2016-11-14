@@ -4,7 +4,7 @@ require("include/html.inc");
 
 $ranks = array("", "Amateur (1-10)", "Recruit (11-20)", "Initiate (21-30)", "Novice (31-40)", "Apprentice (41-50)", "Journeyman (51-60)", "Craftsman (61-70)",
                "Artisan (71-80)", "Adept (81-90)", "Veteran (91-100)", "Expert (101-110)", "Authority (111-120)");
-$crafts = array("Alchemy" => "Alchemy", "Bone" => "Bonecraft", "Cloth" => "Clothcraft", "Cook" => "Cooking", "Gold" => "Goldsmithing", "Leather" => "Leathercraft", "Smith" => "Smithing", "Wood" => "Woodworking");
+$crafts = array("alchemy" => "Alchemy", "bone" => "Bonecraft", "cloth" => "Clothcraft", "cook" => "Cooking", "gold" => "Goldsmithing", "leather" => "Leathercraft", "smith" => "Smithing", "wood" => "Woodworking");
 
 $compiled = array();
 if (isset($_GET['cat']) && isset($_GET['rank'])) {

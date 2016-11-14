@@ -2,7 +2,7 @@
 
 $ranks = array("", "Amateur (1-10)", "Recruit (11-20)", "Initiate (21-30)", "Novice (31-40)", "Apprentice (41-50)", "Journeyman (51-60)", "Craftsman (61-70)",
                "Artisan (71-80)", "Adept (81-90)", "Veteran (91-100)", "Expert (101-110)", "Authority (111-120)");
-$crafts = array("Alchemy" => "Alchemy", "Bone" => "Bonecraft", "Cloth" => "Clothcraft", "Cook" => "Cooking", "Gold" => "Goldsmithing", "Leather" => "Leathercraft", "Smith" => "Smithing", "Wood" => "Woodworking");
+$crafts = array("alchemy" => "Alchemy", "bone" => "Bonecraft", "cloth" => "Clothcraft", "cook" => "Cooking", "gold" => "Goldsmithing", "leather" => "Leathercraft", "smith" => "Smithing", "wood" => "Woodworking");
 
 $clock = true;
 require("include/html.inc");
@@ -19,6 +19,16 @@ if (isset($_GET['cat']) && isset($_GET['rank'])) {
 EOF;
 
   //
+  // Crafting Recipes Header
+  //
+  echo <<<EOF
+     <table class="tbl tbl-ahcathead" style="margin-bottom:10px">
+       <tbody class="recipes-header"></tbody>
+     </table>
+     <br/>
+EOF;
+
+  //
   // Crafting Recipes
   //
   echo <<<EOF
@@ -27,7 +37,7 @@ EOF;
 EOF;
 $rank = $ranks[$_GET['rank']];
 $category = $crafts[$_GET['cat']]." &mdash; ".$rank;
-printf("          <td id=\"recipecat\" colspan=\"4\">%s</td>", $category);
+printf("          <td id=\"recipecat\" colspan=\"4\"><i class=\"fa fa-diamond\" aria-hidden=\"true\"></i> %s</td>", $category);
   echo <<<EOF
         </tr>
         <tr class="tbl-subhead">

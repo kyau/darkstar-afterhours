@@ -55,6 +55,7 @@ h2 > a:hover {
 .green { color: rgba(91,217,97,1); }
 .yellow { color: rgba(180,180,0,1); }
 .lightgray { color: rgba(160,160,160,1); }
+.blue { color: rgb(119,170,255); }
 /* Crystals */
 .fire { color: rgba(222,136,125,1) !important; font-weight: bold; }
 .ice { color: rgba(98,146,198,1) !important; font-weight: bold; }
@@ -441,7 +442,9 @@ img.mini-icon { vertical-align: text-bottom; }
   top: -2px;
 }
 .item-ahcat { color: rgba(119,170,255,1) !important; }
-.catlink, .shoplink { cursor: pointer; }
+.catlink, .shoplink, .recipelink { cursor: pointer; }
+.categories { margin-left: 2px; }
+.categories > tbody > tr > td:not(:last-child) { padding-right: 8px; }
 .tablesorter th { outline: none; }
 .tablesorter-header-inner { cursor: pointer; }
 .tbl-items { padding: 0 !important;}

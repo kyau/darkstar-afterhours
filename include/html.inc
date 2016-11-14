@@ -284,130 +284,130 @@ print <<<EOF
                   <li role=separator" class="divider"></li>
                   <li class="has-sub"><a class="link"><span>Alchemy</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Alchemy" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="alchemy" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                   <li class="has-sub"><a class="link"><span>Bonecraft</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Bone" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="bone" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                   <li class="has-sub"><a class="link"><span>Clothcraft</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cloth" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="cloth" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                   <li class="has-sub"><a class="link"><span>Cooking</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Cook" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="cook" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                   <li class="has-sub"><a class="link"><span>Goldsmithing</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Gold" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="gold" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                   <li class="has-sub"><a class="link"><span>Leathercraft</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Leather" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="leather" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                   <li class="has-sub"><a class="link"><span>Smithing</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Smith" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="smith" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                   <li class="has-sub"><a class="link"><span>Woodworking</span></a>
                     <ul>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="1">Amateur<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="2">Recruit<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="3">Initiate<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="4">Novice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="5">Apprentice<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="6">Journeyman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="7">Craftsman<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="8">Artisan<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="9">Adept<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="10">Veteran<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="11">Expert<span></a></li>
-                      <li><a class="link recipelink" data-craft="Wood" data-rank="12">Authority<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="1">Amateur<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="2">Recruit<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="3">Initiate<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="4">Novice<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="5">Apprentice<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="6">Journeyman<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="7">Craftsman<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="8">Artisan<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="9">Adept<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="10">Veteran<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="11">Expert<span></a></li>
+                      <li><a class="link recipelink" data-craft="wood" data-rank="12">Authority<span></a></li>
                     </ul>
                   </li>
                 </ul>

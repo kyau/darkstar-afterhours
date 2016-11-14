@@ -5,6 +5,8 @@ function numberWithCommas(x) {
 function loadStartPage() {}
 
 function getRecipeCategory() {
+	var craftranks = ["Amateur", "Recruit", "Initiate", "Novice", "Apprentice", "Journeyman", "Craftsman", "Artisan", "Adept", "Veteran", "Expert", "Authority"];
+	var craftranksLength = craftranks.length;
 	var craft = $("body").data("id");
 	var rank = $("body").data("stack");
 	$.ajax({
@@ -20,6 +22,20 @@ function getRecipeCategory() {
 			} else {
 				$("#recipes").html("");
 				$(document).prop('title', 'AfterHours - ' + jsonData.category);
+				// populate recipe header
+				var headerhtml = "<tr>";
+				for (var i = 0; i < craftranksLength; i++) {
+					if ((i+1) == rank) {
+						headerhtml += "<td class=\"center\">"+craftranks[i]+"</td>";
+					} else {
+						headerhtml += "<td class=\"center\"><a class=\"blue\" href=\"/recipes/"+craft+"/"+(i+1)+"\">"+craftranks[i]+"</a></td>";
+					}
+					if (i == 5)
+						headerhtml += "</tr><tr>";
+				}
+				headerhtml += "</tr>";
+				$(".recipes-header").html(headerhtml);
+				// populate recipes
 				$.each(jsonData.recipes, function(i, recipe) {
 					var html = "";
 					html += "<tr>";
