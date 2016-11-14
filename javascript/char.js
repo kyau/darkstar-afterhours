@@ -1,9 +1,13 @@
-function loadStartPage() {}
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 function toFixed(value, precision) {
 	var power = Math.pow(10, precision || 0);
 	return String(Math.round(value * power) / power);
 }
+
+function loadStartPage() {}
 
 function getPlayer() {
 	var charid = $("body").data("id");
@@ -272,8 +276,13 @@ function getPlayer() {
 				$.each(jsonData.ah, function(i, item) {
 					var html = "";
 					html += "<tr>";
-					html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"1\" href=\"/item/"+item.itemid+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
-					html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-stack=\"1\" href=\"/item/"+item.itemid+"\">"+item.itemname+"</a></td>";
+					if (item.quantity > 1) {
+						html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" href=\"/item/"+item.itemid+"?stack=1\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
+						html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" href=\"/item/"+item.itemid+"?stack=1\">"+item.itemname+" <span class=\"lightgray\">x"+item.quantity+"</span></a></td>";
+					} else {
+						html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" href=\"/item/"+item.itemid+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
+						html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" href=\"/item/"+item.itemid+"\">"+item.itemname+"</a></td>";
+					}
 					html += "<td class=\"ah-date\"><a href=\"/item/"+item.itemid+"\">"+item.date+"</a></td>";
 					if (item.seller == jsonData.name) {
 						html += "<td class=\"ah-who\"><a class=\"ah-highlight\" href=\"/item/"+item.itemid+"\">"+item.seller+"</a></td>";
@@ -289,6 +298,31 @@ function getPlayer() {
 					html += "</tr>";
 					$("#auctions").append(html);
 				});
+				$("#bazaar").html("");
+				console.log(jsonData.bazaar);
+				if (jsonData.bazaar.length != 0) {
+					$.each(jsonData.bazaar, function(i, item) {
+						var html = "";
+						html += "<tr>";
+						if (item.quantity > 1) {
+							html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-signature=\""+item.signature+"\" href=\"/item/"+item.itemid+"?stack=1\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
+							html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-signature=\""+item.signature+"\" href=\"/item/"+item.itemid+"?stack=1\">"+item.itemname+" <span class=\"lightgray\">x"+item.quantity+"</span></a></td>";
+						} else {
+							html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-signature=\""+item.signature+"\" href=\"/item/"+item.itemid+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item.itemid+".png\" /></a></td>";
+							html += "<td><a class=\"tip\" data-id=\""+item.itemid+"\" data-signature=\""+item.signature+"\" href=\"/item/"+item.itemid+"\">"+item.itemname+"</a></td>";
+						}
+						html += "<td class=\"center\"><a href=\"/item/"+item.itemid+"\">"+item.price+"</a></td>";
+						if (item.ahprice == 0) {
+							html += "<td class=\"center\"><span class=\"lightgray\">0</span></td>";
+						} else if (item.ahprice < 0)
+							html += "<td class=\"center\"><span class=\"red\">("+numberWithCommas(Math.abs(item.ahprice))+")</span></td>";
+						else
+							html += "<td class=\"center\"><span class=\"green\">+"+numberWithCommas(item.ahprice)+"</span></td>";
+						html += "</tr>";
+						$("#bazaar").append(html);
+					});
+					$(".tbl-bazaar").css("display", "inline-block");
+				}
 			}
 		}
 	});

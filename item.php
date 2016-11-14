@@ -23,7 +23,7 @@ EOF;
   echo <<<EOF
     <table class="tbl tbl-item">
       <thead><tr class="tbl-head">
-        <th colspan="2">Item</th>
+        <th colspan="2"><i class="fa fa-tag" aria-hidden="true"></i> Item</th>
       </tr></thead>
       <tbody><tr>
         <td colspan="2"></td>
@@ -44,7 +44,7 @@ EOF;
   echo <<<EOF
   <table class="tbl tbl-stats tbl-hover">
       <thead><tr class="tbl-head">
-        <th>Stats</th>
+        <th><i class="fa fa-line-chart" aria-hidden="true"></i> Stats</th>
       </tr></thead>
       <tbody><tr>
         <td class="center"><span class="item-ahcat"></span></td>
@@ -65,7 +65,7 @@ EOF;
   echo <<<EOF
       <table class="tbl tbl-ah tbl-hover">
         <thead><tr class="tbl-head">
-          <th colspan="6">Price History<span id="price_history"></span></th>
+          <th colspan="6"><i class="fa fa-balance-scale" aria-hidden="true"></i> Price History<span id="price_history"></span></th>
         </tr>
         <tr class="tbl-subhead">
           <td class="ah-date">Date</td>

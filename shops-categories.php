@@ -18,7 +18,7 @@ EOF;
 echo <<<EOF
       <table class="tbl tbl-ahcats">
         <thead><tr class="tbl-head">
-          <th colspan="3" id="ahcat">Custom Shops List</th>
+          <th colspan="3" id="ahcat"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Custom Shops List</th>
         </tr></thead>
         <tbody><tr>
           <td><table><tr>

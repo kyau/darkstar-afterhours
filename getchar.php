@@ -769,8 +769,12 @@ if (isset($_GET['id'])) {
     $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
     $ah[$z]['itemid'] = $row['itemid'];
     $ah[$z]['itemname'] = $itemname;
-    if ($row['stack'])
-      $ah[$z]['itemname'] .= " x12";
+    if ($row['stack']) {
+      $stackSize = sqlQuery("SELECT stackSize FROM `item_basic` WHERE itemid = ".$row['itemid'])["stackSize"];
+      $ah[$z]['quantity'] = $stackSize;
+    } else {
+      $ah[$z]['quantity'] = 1;
+    }
     //$ah[$z]['buyer'] = $row['buyer_name'];
     //$ah[$z]['seller'] = $row['seller_name'];
     if ($row['buyer_name'] == "DarkStar")
@@ -789,7 +793,26 @@ if (isset($_GET['id'])) {
     $z++;
   }
   $compiled['ah'] = $ah;
-}
+  // bazaar
+  $sql = "SELECT itemId, quantity, bazaar, signature FROM `char_inventory` WHERE charid = ".$charid." AND bazaar > 0 ORDER BY `char_inventory`.`bazaar` DESC";
+  $bazaar = array();
+  $z = 0;
+  $tmp = mysqli_query($dcon, $sql);
+  while ($row = $tmp->fetch_assoc()) {
+  	$bazaar[$z]['itemid'] = $row['itemId'];
+    $itemname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$row['itemId'])['realname']);
+    $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
+    $bazaar[$z]['itemname'] = $itemname;
+  	$bazaar[$z]['quantity'] = $row['quantity'];
+  	$bazaar[$z]['price'] = number_format($row['bazaar']);
+  	$bazaar[$z]['signature'] = $row['signature'];
+  	$ahprice = sqlQuery("SELECT sale FROM `auction_house` WHERE seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND itemid = ".$row['itemId'])["sale"];
+  	$ahprice = $ahprice - $row['bazaar'];
+  	$bazaar[$z]['ahprice'] = $ahprice;
+  	$z++;
+  }
+  $compiled['bazaar'] = $bazaar;
+ }
 
 $json = json_encode($compiled);
 echo $json;

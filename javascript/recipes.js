@@ -46,9 +46,10 @@ function getRecipeCategory() {
 					html += "<td class=\"left vtop\">"
 					html += "<table class=\"tbl-items\"><tbody>";
 					item = recipe.crystal.split(":");
+					crystalclass = item[1].split(" ")[0].toLowerCase();
 					html += "<tr>";
 					html += "<td class=\"icon\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\"><img class=\"mini-icon\" src=\"images/mini-icons/"+item[0]+".png\" /></a></td>";
-					html += "<td class=\"left\"><a class=\"tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\">"+item[1]+"</a></td>";
+					html += "<td class=\"left\"><a class=\""+crystalclass+" tip\" data-id=\""+item[0]+"\" data-stack=\"1\" href=\"/item/"+item[0]+"\">"+item[1]+"</a></td>";
 					html += "</tr>";
 					$.each(recipe.ingredients, function(i, ingredient) {
 						//console.log(i);
@@ -67,7 +68,13 @@ function getRecipeCategory() {
 					html += "<table class=\"tbl-items\"><tbody>";
 					item = recipe.result.split(":");
 					profithtml = "";
-					profit = recipe.price - recipe.ingredientcost;
+					if (recipe.resultcount > 1) {
+						single = (recipe.pricestack / 12);
+						profit = Math.round((single * recipe.resultcount) - recipe.ingredientcost);
+					} else {
+						profit = Math.round(recipe.price - recipe.ingredientcost);
+					}
+
 					if (profit < 0)
 						profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profit))+")</span>";
 					else
@@ -81,7 +88,13 @@ function getRecipeCategory() {
 					if ((recipe.resulthq1 != recipe.result || recipe.resulthq1count != recipe.resultcount)) {
 						item = recipe.resulthq1.split(":");
 						profithtml = "";
-						profithq1 = recipe.pricehq1 - recipe.ingredientcost;
+						//profithq1 = recipe.pricehq1 - recipe.ingredientcost;
+						if (recipe.resulthq1count > 1) {
+							single = (recipe.pricestack / 12);
+							profithq1 = Math.round((single * recipe.resulthq1count) - recipe.ingredientcost);
+						} else {
+							profithq1 = Math.round(recipe.pricehq1 - recipe.ingredientcost);
+						}
 						if (profithq1 < 0)
 							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq1))+")</span>";
 						else
@@ -96,7 +109,13 @@ function getRecipeCategory() {
 					if ((recipe.resulthq2 != recipe.result || recipe.resulthq2count != recipe.resultcount) && (recipe.resulthq2 != recipe.resulthq1 || recipe.resulthq2count != recipe.resulthq1count)) {
 						item = recipe.resulthq2.split(":");
 						profithtml = "";
-						profithq2 = recipe.pricehq2 - recipe.ingredientcost;
+						//profithq2 = recipe.pricehq2 - recipe.ingredientcost;
+						if (recipe.resulthq2count > 1) {
+							single = (recipe.pricestack / 12);
+							profithq2 = Math.round((single * recipe.resulthq2count) - recipe.ingredientcost);
+						} else {
+							profithq2 = Math.round(recipe.pricehq2 - recipe.ingredientcost);
+						}
 						if (profithq2 < 0)
 							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq2))+")</span>";
 						else
@@ -111,7 +130,13 @@ function getRecipeCategory() {
 					if ((recipe.resulthq3 != recipe.result || recipe.resulthq3count != recipe.resultcount) && (recipe.resulthq3 != recipe.resulthq1 || recipe.resulthq3count != recipe.resulthq1count) && (recipe.resulthq3 != recipe.resulthq2 || recipe.resulthq3count != recipe.resulthq2count)) {
 						item = recipe.resulthq3.split(":");
 						profithtml = "";
-						profithq3 = recipe.pricehq3 - recipe.ingredientcost;
+						//profithq3 = recipe.pricehq3 - recipe.ingredientcost;
+						if (recipe.resulthq3count > 1) {
+							single = (recipe.pricestack / 12);
+							profithq3 = Math.round((single * recipe.resulthq3count) - recipe.ingredientcost);
+						} else {
+							profithq3 = Math.round(recipe.pricehq3 - recipe.ingredientcost);
+						}
 						if (profithq3 < 0)
 							profithtml += " <span class=\"red\">("+numberWithCommas(Math.abs(profithq3))+")</span>";
 						else

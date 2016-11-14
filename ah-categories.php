@@ -19,7 +19,7 @@ EOF;
 echo <<<EOF
       <table class="tbl tbl-ahcats">
         <thead><tr class="tbl-head">
-          <th colspan="3" id="ahcat">Auction House - Categories</th>
+          <th colspan="3" id="ahcat"><i class="fa fa-balance-scale" aria-hidden="true"></i> Auction House - Categories</th>
         </tr></thead>
         <tbody><tr>
           <td><table><tr>

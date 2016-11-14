@@ -50,7 +50,7 @@ EOF;
   echo <<<EOF
     <table class="tbl tbl-stats tbl-hover">
       <thead><tr class="tbl-head">
-        <th>Profile</th>
+        <th><i class="fa fa-user" aria-hidden="true"></i> Profile</th>
       </tr></thead>
       <tbody><tr>
         <td></td>
@@ -81,7 +81,7 @@ EOF;
   echo <<<EOF
 
       <div class="player-equipbox">
-        <div class="player-equipbox-head">Equipment</div>
+        <div class="player-equipbox-head"><i class="fa fa-archive" aria-hidden="true"></i> Equipment</div>
 EOF;
   $slot = 0;
   for ($i = 0; $i < 16; $i++) {
@@ -134,6 +134,25 @@ EOF;
   echo <<<EOF
         <div class="player-equipbox-footer"><span id="auto_mainjob">JOB00</span><span id="auto_subjob">JOB00</span></div>
       </div>
+EOF;
+
+  //
+  // Bazaar
+  //
+  echo <<<EOF
+      <table class="tbl tbl-bazaar tbl-hover">
+        <thead><tr class="tbl-head">
+          <th colspan="6"><i class="fa fa-inbox" aria-hidden="true"></i> Bazaar</th>
+        </tr>
+        <tr class="tbl-subhead">
+          <td>&nbsp;</td>
+          <td class="left">Item</td>
+          <td class="center">Price</td>
+          <td class="center">AH</td>
+        </tr></thead>
+        <tbody id="bazaar">
+        </tbody>
+      </table>
       <br/><br/>
 EOF;
 
@@ -143,7 +162,7 @@ EOF;
   echo <<<EOF
     <table class="tbl tbl-crafts tbl-hover">
       <thead><tr class="tbl-head">
-        <th colspan="2">Crafting</th>
+        <th colspan="2"><i class="fa fa-diamond" aria-hidden="true"></i> Crafting</th>
       </tr></thead>
       <tbody><tr>
         <td>Smithing</td>
@@ -184,7 +203,7 @@ EOF;
   echo <<<EOF
       <table class="tbl tbl-mission tbl-hover">
         <thead><tr class="tbl-head">
-          <th colspan="2">Missions</th>
+          <th colspan="2"><i class="fa fa-table" aria-hidden="true"></i> Missions</th>
         </tr></thead>
         <tbody><tr>
           <td>Zilart</td>
@@ -222,7 +241,7 @@ EOF;
   echo <<<EOF
     <table class="tbl tbl-jobs tbl-hovertd">
       <thead><tr class="tbl-head">
-        <th colspan="2">Jobs</th>
+        <th colspan="2"><i class="fa fa-wrench" aria-hidden="true"></i> Jobs</th>
       </tr></thead>
       <tbody><tr>
         <td><span style="float:left">WAR</span>
@@ -289,7 +308,7 @@ EOF;
   echo <<<EOF
       <table class="tbl tbl-ah tbl-hover">
         <thead><tr class="tbl-head">
-          <th colspan="6">Auction House</th>
+          <th colspan="6"><i class="fa fa-balance-scale" aria-hidden="true"></i> Auction House</th>
         </tr>
         <tr class="tbl-subhead">
           <td>&nbsp;</td>
