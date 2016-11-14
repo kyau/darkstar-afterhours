@@ -16,9 +16,10 @@ Download and extract the [latest release](https://github.com/kyau/darkstar-after
 Make sure NGINX and PHP are already setup and running, then add the following rewrite rules to your NGINX config. (If you want to use different web server software just convert these rewrite and location deny lines into the appropriate syntax for your web server.)
 
 ```nginx
-rewrite ^/(db|download|help|users)$ /$1.php last;
-rewrite ^/(db|download|help|users)/$ /$1.php last;
-rewrite ^/(ah|char|item)/([^\?]*)$ /$1.php?id=$2 last;
+rewrite ^/(ah|download|help|recipes|shops|users)$ /$1.php last;
+rewrite ^/(ah|download|help|recipes|shops|users)/$ /$1.php last;
+rewrite ^/(ah|char|item|shops)/([^\?]*)$ /$1.php?id=$2 last;
+rewrite ^/recipes/([^\?]*)/([^\?]*)$ /recipes.php?cat=$1&rank=$2 last;
 location = /include/config.inc { deny all; }
 ```
 
@@ -58,7 +59,10 @@ After this you would probably want to edit the `help.php` and `download.php` fil
 - [x] User Online Status / Full User List
 - [x] Character Profiles
 - [x] Implement Mission Status on Character Profiles
-- [ ] Properly Color Crafts on Character Profiles when Capped
+- [ ] Global Bazaar Page
+- [x] Bazaar's on Character Profiles
+- [ ] Bazaar's on Item Pages
+- [x] Properly Color Crafts on Character Profiles when Capped
 - [x] Auction House Category Listings
 - [x] Auction House Item Information
 - [x] Item Tooltips
@@ -69,6 +73,8 @@ After this you would probably want to edit the `help.php` and `download.php` fil
 - [ ] Add Items/Key Items to Auto-Translator
 - [x] Implement Item Search
 - [ ] Add Filters to Item Search
+- [x] Full Recipe Listings
+- [ ] Recipes on Item Pages
 - [x] Remaster Ingame Icons
 - [x] Help/FAQ Section
-- [ ] Download Section
+- [x] Download Section
