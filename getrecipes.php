@@ -60,6 +60,7 @@ if (isset($_GET['cat']) && isset($_GET['rank'])) {
 
 		$recipes[$count]["price"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe["Result"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
 		$recipes[$count]["pricestack"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe["Result"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 1")["price"];
+		$recipes[$count]["stacksize"] = sqlQuery("SELECT stackSize FROM `item_basic` WHERE itemid = ".$recipe["Result"])["stackSize"];
 		if ($recipe["Result"] != $recipe["ResultHQ1"])
 			$recipes[$count]["pricehq1"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipe["ResultHQ1"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
 		else

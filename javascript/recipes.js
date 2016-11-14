@@ -69,7 +69,7 @@ function getRecipeCategory() {
 					item = recipe.result.split(":");
 					profithtml = "";
 					if (recipe.resultcount > 1) {
-						single = (recipe.pricestack / 12);
+						single = (recipe.pricestack / recipe.stacksize);
 						profit = Math.round((single * recipe.resultcount) - recipe.ingredientcost);
 					} else {
 						profit = Math.round(recipe.price - recipe.ingredientcost);
@@ -90,7 +90,7 @@ function getRecipeCategory() {
 						profithtml = "";
 						//profithq1 = recipe.pricehq1 - recipe.ingredientcost;
 						if (recipe.resulthq1count > 1) {
-							single = (recipe.pricestack / 12);
+							single = (recipe.pricestack / recipe.stacksize);
 							profithq1 = Math.round((single * recipe.resulthq1count) - recipe.ingredientcost);
 						} else {
 							profithq1 = Math.round(recipe.pricehq1 - recipe.ingredientcost);
@@ -111,7 +111,7 @@ function getRecipeCategory() {
 						profithtml = "";
 						//profithq2 = recipe.pricehq2 - recipe.ingredientcost;
 						if (recipe.resulthq2count > 1) {
-							single = (recipe.pricestack / 12);
+							single = (recipe.pricestack / recipe.stacksize);
 							profithq2 = Math.round((single * recipe.resulthq2count) - recipe.ingredientcost);
 						} else {
 							profithq2 = Math.round(recipe.pricehq2 - recipe.ingredientcost);
@@ -132,7 +132,7 @@ function getRecipeCategory() {
 						profithtml = "";
 						//profithq3 = recipe.pricehq3 - recipe.ingredientcost;
 						if (recipe.resulthq3count > 1) {
-							single = (recipe.pricestack / 12);
+							single = (recipe.pricestack / recipe.stacksize);
 							profithq3 = Math.round((single * recipe.resulthq3count) - recipe.ingredientcost);
 						} else {
 							profithq3 = Math.round(recipe.pricehq3 - recipe.ingredientcost);
