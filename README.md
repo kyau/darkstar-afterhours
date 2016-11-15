@@ -52,7 +52,7 @@ $ tar xf ffxiah_items.tgz
 $ php ffxiah_import_xml.php
 ```
 
-After this you would probably want to edit the `help.php` and `download.php` files to customize them to your liking. The main site logo text is in `include/html.inc`.
+After this you would probably want to edit the `help.php` and `download.php` files to customize them to your liking. The main site logo text is in `include/html.inc`. In this same file is the <base> tag within the header, this needs to be changed to the location you are hosting your version of the app.
 
 ### TODO
 
@@ -61,7 +61,7 @@ After this you would probably want to edit the `help.php` and `download.php` fil
 - [x] Implement Mission Status on Character Profiles
 - [ ] Global Bazaar Page
 - [x] Bazaar's on Character Profiles
-- [ ] Bazaar's on Item Pages
+- [x] Bazaar's on Item Pages
 - [x] Properly Color Crafts on Character Profiles when Capped
 - [x] Auction House Category Listings
 - [x] Auction House Item Information

@@ -1201,7 +1201,7 @@ if (isset($_GET['id'])) {
     $compiled["armor"] = 0;
   }
   if (!$tooltip) {
-    // auction house history
+    // auction house - stats
     $compiled["nosale"] = sqlQuery("SELECT NoSale FROM `item_basic` WHERE itemid = ".$itemid)["NoSale"];
     if (!$compiled["nosale"]) {
       $stack = sqlQuery("SELECT stackSize FROM `item_basic` WHERE itemid = ".$itemid)["stackSize"];
@@ -1225,6 +1225,26 @@ if (isset($_GET['id'])) {
       $compiled["price"] = number_format($price);
     }
     if (!$compiled["nosale"]) {
+      // bazaar
+      $sql = "SELECT charid, quantity, bazaar, signature FROM `char_inventory` WHERE itemid = ".$itemid." AND bazaar > 0 ORDER BY `char_inventory`.`bazaar` DESC";
+      $bazaar = array();
+      $z = 0;
+      $tmp = mysqli_query($dcon, $sql);
+      while ($row = $tmp->fetch_assoc()) {
+        $bazaar[$z]['charid'] = $row['charid'];
+        $charname = sqlQuery("SELECT charname FROM `chars` WHERE charid = ".$row['charid'])['charname'];
+        $bazaar[$z]['charname'] = $charname;
+        $bazaar[$z]['quantity'] = $row['quantity'];
+        $bazaar[$z]['price'] = number_format($row['bazaar']);
+        $bazaar[$z]['signature'] = $row['signature'];
+        $ahprice = sqlQuery("SELECT sale FROM `auction_house` WHERE seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND itemid = ".$itemid)["sale"];
+        $ahprice = $ahprice - $row['bazaar'];
+        $bazaar[$z]['ahprice'] = $ahprice;
+        $z++;
+      }
+      $compiled['bazaar'] = $bazaar;
+
+      // auction house
       if (isset($_GET["stack"])) {
         $sql = "SELECT * FROM `auction_house` WHERE itemid = ".$itemid." AND stack = 0 ORDER BY `auction_house`.`sell_date` DESC LIMIT 20";
         if ($_GET["stack"] == 1) {

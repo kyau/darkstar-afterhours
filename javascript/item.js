@@ -1,3 +1,7 @@
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function loadStartPage() {}
 
 function getItem() {
@@ -60,7 +64,30 @@ function getItem() {
 					});
 					if (z != 0)
 						$("#price_history").html(" ("+z+")");
+					z = 0;
+					console.log(jsonData.bazaar.length);
+					if (jsonData.bazaar.length > 0) {
+						$("#bazaars").html("");
+						$.each(jsonData.bazaar, function(i, bazaar) {
+							var html = "";
+							html += "<tr>";
+							html += "<td class=\"left\"><a class=\"blue\" href=\"/char/"+bazaar.charid+"\">"+bazaar.charname+"</a></td>";
+							html += "<td class=\"center\">"+bazaar.price+"</td>";
+							if (bazaar.ahprice == 0) {
+								html += "<td class=\"center\"><span class=\"lightgray\">0</span></td>";
+							} else if (bazaar.ahprice < 0)
+								html += "<td class=\"center\"><span class=\"red\">("+numberWithCommas(Math.abs(bazaar.ahprice))+")</span></td>";
+							else
+								html += "<td class=\"center\"><span class=\"green\">+"+numberWithCommas(bazaar.ahprice)+"</span></td>";
+							$("#bazaars").append(html);
+							z = z + 1;
+						});
+						if (z != 0)
+							$("#bazaar_list").html(" ("+z+")");
+						$(".tbl-bazaar").css("display", "inline-block");
+					}
 				} else {
+					console.log("hide2");
 					$(".tbl.tbl-ahcathead").css("display", "none");
 					$(".tbl-ah").css("display", "none");
 					var $rows = $(".tbl-stats tr");

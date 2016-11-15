@@ -60,6 +60,25 @@ EOF;
 EOF;
 
   //
+  // Bazaars
+  //
+  echo <<<EOF
+      <table class="tbl tbl-bazaar tbl-hover">
+        <thead><tr class="tbl-head">
+          <th colspan="6"><i class="fa fa-inbox" aria-hidden="true"></i> Bazaars<span id="bazaar_list"></span></th>
+        </tr>
+        <tr class="tbl-subhead">
+          <td class="left">Seller</td>
+          <td class="center">Price</td>
+          <td class="center">AH</td>
+        </tr></thead>
+        <tbody id="bazaars">
+        </tbody>
+      </table>
+    <br/><br/>
+EOF;
+
+  //
   // Auction House
   //
   echo <<<EOF
