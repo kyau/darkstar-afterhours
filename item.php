@@ -88,7 +88,7 @@ EOF;
   <div class="recipe-hide">
     <table class="tbl tbl-recipes">
       <thead><tr class="tbl-head">
-        <td id="recipecat" colspan="4"><i class="fa fa-diamond" aria-hidden="true"></i> Crafting Recipe</td>
+        <td id="recipecat" colspan="4"><i class="fa fa-diamond" aria-hidden="true"></i> Crafting Recipes</td>
       </tr>
       <tr class="tbl-subhead">
         <th class="center">Skills <i class="fa fa-unsorted" aria-hidden="true"></i></th>
@@ -122,6 +122,7 @@ EOF;
 EOF;
 
   // Footer
+  echo "      <div id=\"toTop\"><i class=\"fa fa-caret-square-o-up\" aria-hidden=\"true\"></i></div>";
   echo "    </div>";
   htmlFooter("item");
 } else {
