@@ -48,6 +48,9 @@ $dcon->set_charset("utf8");
 
 function htmlHeader($id = "", $stack = 0) {
   global $clock;
+  $version = file_get_contents("version.info");
+  preg_match_all('/(CLIENT_VER: )(\d+_\d)/', $version, $keys, PREG_PATTERN_ORDER);
+  $client = $keys[2][0];
   $idtitle = "";
   $html = <<<EOF
 <!DOCTYPE html>
@@ -76,6 +79,7 @@ EOF;
     <div id="header">
       <a href="/"><h1>After<span>Hours</span></h1></a>
 EOF;
+  $html .= "      <span class=\"small textshadow\">Supported Client Version: <span class=\"lightgray\">".$client."</span></span><br/>";
   echo $html;
 }
 
