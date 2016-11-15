@@ -25,7 +25,7 @@ EOF;
 EOF;
 $catid = $_GET['id'];
 $category = getCategory($catid);
-printf("          <td id=\"ahcat\" colspan=\"6\">%s</td>", $category);
+printf("          <td id=\"ahcat\" colspan=\"6\"><i class=\"fa fa-balance-scale\" aria-hidden=\"true\"></i> %s</td>", $category);
   echo <<<EOF
         </tr>
         <tr class="tbl-subhead">
@@ -46,6 +46,7 @@ EOF;
       </table>
 EOF;
   // Footer
+  echo "      <div id=\"toTop\"><i class=\"fa fa-caret-square-o-up\" aria-hidden=\"true\"></i></div>";
   echo "    </div>";
   htmlFooter("ah");
 } else {

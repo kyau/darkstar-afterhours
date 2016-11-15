@@ -55,6 +55,7 @@ EOF;
       </table>
 EOF;
   // Footer
+  echo "      <div id=\"toTop\"><i class=\"fa fa-caret-square-o-up\" aria-hidden=\"true\"></i></div>";
   echo "    </div>";
   htmlFooter("recipes");
 } else {

@@ -40,7 +40,6 @@ function getRecipeCategory() {
 					var html = "";
 					html += "<tr>";
 					html += "<td class=\"center vtop\">";
-					//html += "id:"+recipe.id+"<br/>";
 					if (recipe.alchemy != 0)
 						html += "Alchemy (" + recipe.alchemy + ")<br/>";
 					if (recipe.bone != 0)
@@ -57,6 +56,7 @@ function getRecipeCategory() {
 						html += "Smithing (" + recipe.smith + ")<br/>";
 					if (recipe.wood != 0)
 						html += "Woodworking (" + recipe.wood + ")<br/>";
+					html += "<span class=\"lightgray\">id:"+recipe.id+"</span>";
 					html += "</td>";
 					// Ingredients
 					html += "<td class=\"left vtop\">"

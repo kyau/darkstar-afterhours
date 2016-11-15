@@ -18,6 +18,7 @@ echo <<<EOF
         </tr></thead>
         <tbody id="ajax"></tbody>
       </table>
+      <div id="toTop"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></div>
       </div>
       <br/>
       <form method="get" class="searchBox" action="/search.php">

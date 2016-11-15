@@ -79,7 +79,7 @@ EOF;
     <div id="header">
       <a href="/"><h1>After<span>Hours</span></h1></a>
 EOF;
-  $html .= "      <span class=\"small textshadow\">Supported Client Version: <span class=\"lightgray\">".$client."</span></span><br/>";
+  $html .= "      <span class=\"small textshadow\">Supported Client Version: <span class=\"lightgray darktextshadow\">".$client."</span></span><br/>";
   echo $html;
 }
 

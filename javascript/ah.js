@@ -41,8 +41,8 @@ function getAHCategory() {
 					html += "<td class=\"center\">"+item.level+"</td>";
 					if (ahcat < 14 || ahcat == 15)
 						html += "<td class=\"center\">"+item.dps+"</td>";
-					html += "<td class=\"center\">"+item.stackedprice+"</td>";
-					html += "<td class=\"center\">"+item.stackedinstock+"</td>";
+					html += "<td class=\"center\">"+item.price+"</td>";
+					html += "<td class=\"center\">"+item.instock+"</td>";
 					html += "</tr>";
 					$("#auctions").append(html);
 					var html = "";
@@ -56,8 +56,8 @@ function getAHCategory() {
 						html += "<td class=\"center\">"+item.level+"</td>";
 						if (ahcat < 14 || ahcat == 15)
 							html += "<td class=\"center\">"+item.dps+"</td>";
-						html += "<td class=\"center\">"+item.price+"</td>";
-						html += "<td class=\"center\">"+item.instock+"</td>";
+						html += "<td class=\"center\">"+item.stackedprice+"</td>";
+						html += "<td class=\"center\">"+item.stackedinstock+"</td>";
 						html += "</tr>";
 						$("#auctions").append(html);
 					}

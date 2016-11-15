@@ -83,6 +83,14 @@ $("body").on("mouseleave", ".tip", function () {
 	}).html(html);
 });
 
+$("#content").scroll(function() {
+    if ($(this).scrollTop()) {
+        $('#toTop:hidden').stop(true, true).fadeIn();
+    } else {
+        $('#toTop').stop(true, true).fadeOut();
+    }
+});
+
 $(function() {
 	$(document).on("click", ".catlink", function (){
 		iID = $(this).data("id");
@@ -97,4 +105,8 @@ $(function() {
 		iRank = $(this).data("rank");
 		window.location.href = "https://" + location.host + '/recipes/' + iCraft + '/' + iRank;
 	});
+	$(document).on("click", "#toTop", function() {
+		$("#content").scrollTop(0);
+	});
+	$('#toTop').stop(true, true).fadeOut();
 });
