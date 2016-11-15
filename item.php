@@ -75,7 +75,6 @@ EOF;
         <tbody id="bazaars">
         </tbody>
       </table>
-    <br/><br/>
 EOF;
 
   //
