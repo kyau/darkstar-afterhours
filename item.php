@@ -21,6 +21,7 @@ EOF;
   // Character Stats
   //
   echo <<<EOF
+    <div class="topline">
     <table class="tbl tbl-item">
       <thead><tr class="tbl-head">
         <th colspan="2"><i class="fa fa-tag" aria-hidden="true"></i> Item</th>
@@ -56,13 +57,13 @@ EOF;
         <td class="center item-bgwiki"></td>
       </tr></tbody>
     </table>
-    <br/><br/>
 EOF;
 
   //
   // Bazaars
   //
   echo <<<EOF
+    <div class="bazaar-hide">
       <table class="tbl tbl-bazaar tbl-hover">
         <thead><tr class="tbl-head">
           <th colspan="6"><i class="fa fa-inbox" aria-hidden="true"></i> Bazaars<span id="bazaar_list"></span></th>
@@ -75,6 +76,30 @@ EOF;
         <tbody id="bazaars">
         </tbody>
       </table>
+    </div>
+    </div>
+    <br/>
+EOF;
+
+  //
+  // Crafting Recipe
+  //
+  echo <<<EOF
+  <div class="recipe-hide">
+    <table class="tbl tbl-recipes">
+      <thead><tr class="tbl-head">
+        <td id="recipecat" colspan="4"><i class="fa fa-diamond" aria-hidden="true"></i> Crafting Recipe</td>
+      </tr>
+      <tr class="tbl-subhead">
+        <th class="center">Skills <i class="fa fa-unsorted" aria-hidden="true"></i></th>
+        <th class="center">Ingredients <i class="fa fa-unsorted" aria-hidden="true"></i></th>
+        <th class="center">Results <i class="fa fa-unsorted" aria-hidden="true"></i></th>
+      </tr></thead>
+      <tbody id="recipes">
+      </tbody>
+    </table>
+    <br/><br/>
+  </div>
 EOF;
 
   //
@@ -95,6 +120,7 @@ EOF;
         </tbody>
       </table>
 EOF;
+
   // Footer
   echo "    </div>";
   htmlFooter("item");

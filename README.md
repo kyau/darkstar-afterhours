@@ -74,7 +74,7 @@ After this you would probably want to edit the `help.php` and `download.php` fil
 - [x] Implement Item Search
 - [ ] Add Filters to Item Search
 - [x] Full Recipe Listings
-- [ ] Recipes on Item Pages
+- [x] Recipes on Item Pages
 - [x] Remaster Ingame Icons
 - [x] Help/FAQ Section
 - [x] Download Section

@@ -227,6 +227,8 @@ td.icon { width: 16px; }
 .tbl-ah td:first-child { padding-right: 1px !important; padding-left: 6px !important; }
 .tbl-bazaar td:first-child { padding-right: 1px !important; padding-left: 6px !important; }
 .tbl-bazaar { display: none; }
+.recipe-hide { display: none; }
+.bazaar-hide { display: none; }
 .tbl-ahcathead td { padding: 2px 6px !important; }
 .tbl-item, .tbl-item > thead > tr > th { width: 300px; }
 .tbl-item td.item { padding: 0 2px !important; }

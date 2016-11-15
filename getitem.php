@@ -1251,35 +1251,123 @@ if (isset($_GET['id'])) {
           $sql = "SELECT * FROM `auction_house` WHERE itemid = ".$itemid." AND stack = 1 ORDER BY `auction_house`.`sell_date` DESC LIMIT 20";
           $realname .= " x12";
         }
-      $tmp = mysqli_query($dcon, $sql);
-      $ah = array();
-      $z = 0;
-      while($row = $tmp->fetch_assoc()) {
-        if ($row["seller_name"] == "null" or $row["buyer_name"] == null)
-          continue;
-        if (intval(date("Y",$row["sell_date"])) > 2018)
-          continue;
-        if ($row["buyer_name"] == "DarkStar")
-          $ah[$z]["buyer"] = "AfterHours";
-        else
-          $ah[$z]["buyer"] = $row["buyer_name"];
-        if ($row["seller_name"] == "DarkStar")
-          $ah[$z]["seller"] = "AfterHours";
-        else
-          $ah[$z]["seller"] = $row['seller_name'];
-        $ah[$z]["price"] = number_format($row["sale"]);
-        //$ah[$z]["date"] = trim(date("m/d/Y h:ia", $row["sell_date"]), "m");
-        $timestamp = new DateTime(date("Y-m-d H:i:s",$row['sell_date']));
-        $ah[$z]["date"] = trim($timestamp->format("m/d/Y h:ia"), "m");
-        $z++;
+        $tmp = mysqli_query($dcon, $sql);
+        $ah = array();
+        $z = 0;
+        while($row = $tmp->fetch_assoc()) {
+          if ($row["seller_name"] == "null" or $row["buyer_name"] == null)
+            continue;
+          if (intval(date("Y",$row["sell_date"])) > 2018)
+            continue;
+          if ($row["buyer_name"] == "DarkStar")
+            $ah[$z]["buyer"] = "AfterHours";
+          else
+            $ah[$z]["buyer"] = $row["buyer_name"];
+          if ($row["seller_name"] == "DarkStar")
+            $ah[$z]["seller"] = "AfterHours";
+          else
+            $ah[$z]["seller"] = $row['seller_name'];
+          $ah[$z]["price"] = number_format($row["sale"]);
+          //$ah[$z]["date"] = trim(date("m/d/Y h:ia", $row["sell_date"]), "m");
+          $timestamp = new DateTime(date("Y-m-d H:i:s",$row['sell_date']));
+          $ah[$z]["date"] = trim($timestamp->format("m/d/Y h:ia"), "m");
+          $z++;
+        }
+        $compiled["ah"] = $ah;
       }
-      $compiled["ah"] = $ah;
     }
-  }
-}
 
-$json = json_encode($compiled);
-echo $json;
+    // Recipe
+    $sql = "SELECT * FROM `synth_recipes` WHERE `Result` = ".$itemid." OR ResultHQ1 = ".$itemid." OR ResultHQ2 = ".$itemid." OR ResultHQ3 = ".$itemid;
+    $tmp = mysqli_query($dcon, $sql);
+    $recipe = array();
+    $a = 0;
+
+    while($recipesql = $tmp->fetch_assoc()) {
+      if ($a > 0)
+        break;
+      $recipe["id"] = $recipesql["ID"];
+      $recipe["alchemy"] = $recipesql["Alchemy"];
+      $recipe["bone"] = $recipesql["Bone"];
+      $recipe["cloth"] = $recipesql["Cloth"];
+      $recipe["cook"] = $recipesql["Cook"];
+      $recipe["gold"] = $recipesql["Gold"];
+      $recipe["leather"] = $recipesql["Leather"];
+      $recipe["smith"] = $recipesql["Smith"];
+      $recipe["wood"] = $recipesql["Wood"];
+      $cname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$recipesql["Crystal"])["realname"]);
+      $cname = str_replace("The", "the", str_replace("Of", "of", $cname));
+      $rname = $recipesql["Crystal"].":".$cname;
+      $recipe["crystal"] = $rname;
+      $ingredients = array();
+      $recipesqlcost = 0;
+      for ($i = 1; $i < 9; $i++) {
+        $name = "Ingredient".$i;
+        if ($recipesql[$name] == 0)
+          continue;
+        $itemname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$recipesql[$name])["realname"]);
+        $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
+        $rname = $recipesql[$name].":".$itemname;
+        if (array_key_exists($rname, $ingredients)) {
+          $ingredients[$rname] += 1;
+        } else {
+          $ingredients[$rname] = 1;
+        }
+      }
+      foreach ($ingredients as $key => $quantity) {
+        $itemid = explode(":", $key)[0];
+        $cost = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$itemid." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+        $recipesqlcost += ($cost * $quantity);
+      }
+      $recipe["ingredients"] = $ingredients;
+      $recipe["ingredientcost"] = $recipesqlcost;
+
+      $recipe["price"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipesql["Result"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+      $recipe["pricestack"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipesql["Result"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 1")["price"];
+      $recipe["stacksize"] = sqlQuery("SELECT stackSize FROM `item_basic` WHERE itemid = ".$recipesql["Result"])["stackSize"];
+      if ($recipesql["Result"] != $recipesql["ResultHQ1"])
+        $recipe["pricehq1"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipesql["ResultHQ1"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+      else
+        $recipe["pricehq1"] = 0;
+      if ($recipesql["ResultHQ1"] != $recipesql["ResultHQ2"])
+        $recipe["pricehq2"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipesql["ResultHQ2"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+      else
+        $recipe["pricehq2"] = 0;
+      if ($recipesql["ResultHQ2"] != $recipesql["ResultHQ3"])
+        $recipe["pricehq3"] = sqlQuery("SELECT price FROM `auction_house` WHERE itemid = ".$recipesql["ResultHQ3"]." AND seller_name = 'DarkStar' AND buyer_name = 'DarkStar' AND stack = 0")["price"];
+      else
+        $recipe["pricehq3"] = 0;
+
+      $itemname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$recipesql["Result"])["realname"]);
+      $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
+      $rname = $recipesql["Result"].":".$itemname;
+      $recipe["result"] = $rname;
+      $recipe["resultcount"] = $recipesql["ResultQty"];
+
+      $itemname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$recipesql["ResultHQ1"])["realname"]);
+      $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
+      $rname = $recipesql["ResultHQ1"].":".$itemname;
+      $recipe["resulthq1"] = $rname;
+      $recipe["resulthq1count"] = $recipesql["ResultHQ1Qty"];
+
+      $itemname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$recipesql["ResultHQ2"])["realname"]);
+      $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
+      $rname = $recipesql["ResultHQ2"].":".$itemname;
+      $recipe["resulthq2"] = $rname;
+      $recipe["resulthq2count"] = $recipesql["ResultHQ2Qty"];
+
+      $itemname = ucwords(sqlQuery("SELECT realname FROM `item_info` WHERE itemid = ".$recipesql["ResultHQ3"])["realname"]);
+      $itemname = str_replace("The", "the", str_replace("Of", "of", $itemname));
+      $rname = $recipesql["ResultHQ3"].":".$itemname;
+      $recipe["resulthq3"] = $rname;
+      $recipe["resulthq3count"] = $recipesql["ResultHQ3Qty"];
+    }
+    $compiled["recipe"] = $recipe;
+
+  }
+
+  $json = json_encode($compiled);
+  echo $json;
 
 }
 
