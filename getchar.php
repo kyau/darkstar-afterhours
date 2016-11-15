@@ -2,6 +2,29 @@
 
 require("include/html.inc");
 
+function linkshellColor($color) {
+	$color = dechex($color);
+	$color = substr($color, 1);
+	$r=0;
+	$g=0;
+	$b=0;
+	if(strlen($color) == 3) {
+		$r = hexdec(substr($color,2,1).substr($color,2,1));
+		$g = hexdec(substr($color,1,1).substr($color,1,1));
+		$b = hexdec(substr($color,0,1).substr($color,0,1));
+	}
+	$rgb = array($r, $g, $b);
+	return $rgb;
+}
+
+function createIcon($type, $rgb) {
+	$output = "";
+	$output .= shell_exec('convert images/icons/base.png -fill "rgb('.$rgb[0].','.$rgb[1].','.$rgb[2].')" -colorize 100 images/icons/tmp.png');
+	$output .= shell_exec('convert images/icons/'.$type.'.png images/icons/tmp.png \( -clone 0 -alpha extract \) \( -clone 1 -clone 2 -alpha off -compose copy_opacity -composite -alpha on -channel a -evaluate multiply 0.8 +channel \) -delete 1,2 -compose overlay -composite images/icons/'.$type.'/'.$rgb[0].$rgb[1].$rgb[2].'.png');
+	$output .= shell_exec("rm images/icons/tmp.png");
+	return $output;
+}
+
 $compiled = array();
 $jobs = array("GENKAI","WAR","MNK","WHM","BLM","RDM","THF","PLD","DRK","BST","BRD","RNG","SAM","NIN","DRG","SMN","BLU","COR","PUP","DNC","SCH","GEO","RUN");
 $mission_array = array(
@@ -371,13 +394,23 @@ if (isset($_GET['id'])) {
   // pull character linkshell information
   $linkshell = sqlQuery("SELECT signature, itemId FROM `char_inventory` WHERE charid = ".$charid." AND location = 0 AND slot = (SELECT slotid FROM `char_equip` WHERE charid = ".$charid." AND equipslotid = 16)");
   if (isset($linkshell["signature"])) {
-    if ($linkshell["itemId"] == "513")
+    if ($linkshell["itemId"] == "513") {
       $compiled["ls_rank"] = 1;
-    else if ($linkshell["itemId"] == "514")
+  	  $ls = "linkshell";
+    } else if ($linkshell["itemId"] == "514") {
       $compiled["ls_rank"] = 2;
-    else if ($linkshell["itemId"] == "515")
+  	  $ls = "pearlsack";
+    } else if ($linkshell["itemId"] == "515") {
       $compiled["ls_rank"] = 3;
+  	  $ls = "linkpearl";
+    }
     $compiled["ls_name"] = $linkshell["signature"];
+    $color = sqlQuery("SELECT color FROM `linkshells` WHERE name = '".$linkshell["signature"]."'")["color"];
+    $rgb = linkshellColor($color);
+    if (!file_exists("images/icons/".$ls."/".$rgb[0].$rgb[1].$rgb[2].".png")) {
+    	$compiled["createIconOutput"] = createIcon($ls, $rgb);
+    }
+    $compiled["ls_color"] = $rgb;
   } else {
     $compiled["ls_name"] = "N/A";
     $compiled["ls_rank"] = 0;

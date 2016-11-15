@@ -26,11 +26,11 @@ function getPlayer() {
 				$("#auto_name").html(jsonData.name);
 				if (jsonData.ls_name != "N/A") {
 					if (jsonData.ls_rank == "1") {
-						$("#auto_linkshell").html("<img src=\"images/icons/linkshell.png\" /> "+jsonData.ls_name);
+						$("#auto_linkshell").html("<img src=\"images/icons/linkshell/"+jsonData.ls_color[0]+jsonData.ls_color[1]+jsonData.ls_color[2]+".png\" /> "+jsonData.ls_name);
 					} else if (jsonData.ls_rank == "2") {
-						$("#auto_linkshell").html("<img src=\"images/icons/pearlsack.png\" /> "+jsonData.ls_name);
+						$("#auto_linkshell").html("<img src=\"images/icons/pearlsack/"+jsonData.ls_color[0]+jsonData.ls_color[1]+jsonData.ls_color[2]+".png\" /> "+jsonData.ls_name);
 					} else {
-						$("#auto_linkshell").html("<img src=\"images/icons/linkpearl.png\" /> "+jsonData.ls_name);
+						$("#auto_linkshell").html("<img src=\"images/icons/linkpearl/"+jsonData.ls_color[0]+jsonData.ls_color[1]+jsonData.ls_color[2]+".png\" /> "+jsonData.ls_name);
 					}
 				}
 				$("#auto_img").attr("src", jsonData.char_img);

@@ -1,5 +1,9 @@
 scripts/ffxiah_items.xml
 include/config.inc
+images/icons/pearlsack/*.png
+images/icons/linkshell/*.png
+images/icons/linkpearl/*.png
+images/icons/tmp.png
 images/large-icons/
 images/large-icons-original.tar.gz
 images/mini-icons/
