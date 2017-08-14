@@ -61,7 +61,7 @@ function htmlHeader($id = "", $stack = 0) {
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <base href='//ffxi.kyau.net:4444/' />
+  <base href='//ffxi.kyau.net/' />
   <link rel="stylesheet" type="text/css" href="css/main.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -151,6 +151,23 @@ EOF;
     }
   }
   $html = $html . <<<EOF
+<!-- KYAU Analytics -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.kyau.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//stats.kyau.net/piwik.php?idsite=2&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End KYAU Analytics -->
+
 </body>
 </html>
 EOF;
